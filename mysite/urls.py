@@ -21,6 +21,7 @@ from polls import views
 urlpatterns = [
     url(r'^polls/', include('polls.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^application/',include('application.urls')),
     url(r'^accounts/login/$',  login),
     url(r'^accounts/logout/$', logout),
     url(r'^showMeta/$', views.display_meta),
