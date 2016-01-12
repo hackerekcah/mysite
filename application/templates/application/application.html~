@@ -12,7 +12,7 @@
 	
 			<title>Applicant Information | Official ESTA Application Website, U.S. Customs and Border Protection</title>
 		
-<link id="mainStyle" rel="stylesheet" href="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/styles-esta-v1446499383000.css" type="text/css">
+<link id="mainStyle" rel="stylesheet" href="/static/application/styles-esta-v1446499383000.css" type="text/css">
 
 <!--[if lte IE 8]>
     <link rel="stylesheet" type="text/css" href="/esta/css/ie/ie-esta-v1445883339000.css" />
@@ -24,20 +24,20 @@
 
 <!-- - - Libraries - - -->
 <!--[if (!IE)|(gt IE 8)]><!-->
-	<script type="text/javascript" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/jquery-esta-v1445883346000.js"></script>
+	<script type="text/javascript" src="/static/application/jquery-esta-v1445883346000.js"></script>
 <!--<![endif]-->
 
 <!--[if lte IE 8]>
   <script type="text/javascript" src="/esta/js/vendor/ie8/jquery-esta-v1445883345000.js"></script>
 <![endif]-->
 
-<script type="text/javascript" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/bootstrap-3.3.2-esta-v1445883346000.js"></script>
-<script type="text/javascript" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/bootstrap-accessibility_1.0.3-esta-v1445883346000.js"></script>
+<script type="text/javascript" src="/static/application/bootstrap-3.3.2-esta-v1445883346000.js"></script>
+<script type="text/javascript" src="/static/application/bootstrap-accessibility_1.0.3-esta-v1445883346000.js"></script>
 <script type="text/javascript">
 	var contextPath = '/esta';
 	var pageId = 'applicantInfo';
 </script>
-<script type="text/javascript" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/esta.main-esta-v1445883345000.js"></script>
+<script type="text/javascript" src="/static/application/esta.main-esta-v1445883345000.js"></script>
 
 	<script type="text/javascript">
 	
@@ -133,26 +133,26 @@ function addBeforeUnloadEvent(func) {
 
 <div class="header container-fluid">
 	<div class="row language-header">
-        <div class="col-xs-12 col-md-5 col-sm-6 language-container language-dhs"><img alt="US Flag - Official Website of the Department of Homeland Security" title="Official Website of the Department of Homeland Security" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/usFlag-esta-v1445883343000.png"><span lang="">&nbsp;Official Website of the Department of Homeland Security</span></div>
+        <div class="col-xs-12 col-md-5 col-sm-6 language-container language-dhs"><img alt="US Flag - Official Website of the Department of Homeland Security" title="Official Website of the Department of Homeland Security" class="language-flag" src="/static/application/usFlag-esta-v1445883343000.png"><span lang="">&nbsp;Official Website of the Department of Homeland Security</span></div>
 		<div class="nocss">
 			<hr>
 			<a href="http://www.cbp.gov/">
-				<img src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/CBPlogo-sm-esta-v1445883343000.png" width="200" height="59" alt="Official Seal of the U.S. Customs and Border Protection, U.S. Department of Homeland Security"> 
+				<img src="/static/application/CBPlogo-sm-esta-v1445883343000.png" width="200" height="59" alt="Official Seal of the U.S. Customs and Border Protection, U.S. Department of Homeland Security"> 
 			</a> 
-			<img src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/estaPrint-sm-esta-v1445883344000.png" width="200" height="63" alt="ESTA - Electronic System for Travel Authorization | U.S. Department of Homeland Security">
+			<img src="/static/application/estaPrint-sm-esta-v1445883344000.png" width="200" height="63" alt="ESTA - Electronic System for Travel Authorization | U.S. Department of Homeland Security">
 			<hr>
 		</div>
 		<div class="hidden-xs col-xs-12 col-md-7 col-sm-6 language-container pull-right">
             <div class="row">
                 <div class="col-xs-12 toggle-language">
-                    <span class="language-text hidden-sm">Change Language <img class="hidden-sm" alt="" title="" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/yellowCarat-esta-v1445883345000.png"></span>
-                    <a tabindex="0" id="languageDrop" class="button esta-language dropdown" title="Change Language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" lang="en"><img alt="English Language" title="English Language" class="us-uk-flags  language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/usUkFlag.png">English (U.S./U.K.) <span class="caret"></span></a>
+                    <span class="language-text hidden-sm">Change Language <img class="hidden-sm" alt="" title="" src="/static/application/yellowCarat-esta-v1445883345000.png"></span>
+                    <a tabindex="0" id="languageDrop" class="button esta-language dropdown" title="Change Language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" lang="en"><img alt="English Language" title="English Language" class="us-uk-flags  language-flag" src="/static/application/usUkFlag.png">English (U.S./U.K.) <span class="caret"></span></a>
                     <div id="languageDropSmall" aria-labelledby="languageDrop" role="menu" class="f-dropdown fixed-dropdown dropdown-menu content large language-dropdown" tabindex="-1" data-dropdown-content="">
                         <div class="row">
                             <div class="row">
                                 <div class="col-md-12">
                                     <ul class="language-dropdown">
-                                        <li class="language-dropdown"><a href="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection.html" lang="en"><img alt="English Language" title="English Language" class="us-uk-flags language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/usUkFlag-esta-v1445883343000.png">English (U.S./U.K.)</a></li>
+                                        <li class="language-dropdown"><a href="/static/application/Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection.html" lang="en"><img alt="English Language" title="English Language" class="us-uk-flags language-flag" src="/static/application/usUkFlag-esta-v1445883343000.png">English (U.S./U.K.)</a></li>
                                     </ul>
                                     <hr>
                                 </div>
@@ -160,40 +160,40 @@ function addBeforeUnloadEvent(func) {
                             <div class="row">
                                 <div class="col-xs-12 col-md-3">
                                     <ul class="language-dropdown">
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=cs" lang="cs"><img alt="Czech Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/czechFlag-esta-v1445883343000.png">Čeština</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=zh_TW" lang="zh-Hant"><img alt="Chinese Language, Traditional" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/taiwanFlag-esta-v1445883343000.png">中文</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=da" lang="da"><img alt="Danish Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/denmarkFlag-esta-v1445883343000.png">Dansk</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=de" lang="de"><img alt="German Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/germanyFlag-esta-v1445883343000.png">Deutsch</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=et" lang="et"><img alt="Estonian Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/estoniaFlag-esta-v1445883343000.png">Eesti</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=el" lang="el"><img alt="Greek Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/greeceFlag-esta-v1445883343000.png">Ελληνικά</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=cs" lang="cs"><img alt="Czech Language" class="language-flag" src="/static/application/czechFlag-esta-v1445883343000.png">Čeština</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=zh_TW" lang="zh-Hant"><img alt="Chinese Language, Traditional" class="language-flag" src="/static/application/taiwanFlag-esta-v1445883343000.png">中文</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=da" lang="da"><img alt="Danish Language" class="language-flag" src="/static/application/denmarkFlag-esta-v1445883343000.png">Dansk</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=de" lang="de"><img alt="German Language" class="language-flag" src="/static/application/germanyFlag-esta-v1445883343000.png">Deutsch</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=et" lang="et"><img alt="Estonian Language" class="language-flag" src="/static/application/estoniaFlag-esta-v1445883343000.png">Eesti</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=el" lang="el"><img alt="Greek Language" class="language-flag" src="/static/application/greeceFlag-esta-v1445883343000.png">Ελληνικά</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-xs-12 col-md-3">
                                     <ul class="language-dropdown">
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=es" lang="es"><img alt="Spanish Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/spainFlag-esta-v1445883343000.png">Español</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=fr" lang="fr"><img alt="French Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/franceFlag-esta-v1445883343000.png">Français</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=is" lang="is"><img alt="Icelandic Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/icelandFlag-esta-v1445883343000.png">Íslenska</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=it" lang="it"><img alt="Italian Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/italyFlag-esta-v1445883343000.png">Italiano</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=ja" lang="ja"><img alt="Japanese Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/japanFlag-esta-v1445883343000.png">日本語</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=ko" lang="ko"><img alt="Korean Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/koreaFlag-esta-v1445883343000.png">한국어</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=es" lang="es"><img alt="Spanish Language" class="language-flag" src="/static/application/spainFlag-esta-v1445883343000.png">Español</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=fr" lang="fr"><img alt="French Language" class="language-flag" src="/static/application/franceFlag-esta-v1445883343000.png">Français</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=is" lang="is"><img alt="Icelandic Language" class="language-flag" src="/static/application/icelandFlag-esta-v1445883343000.png">Íslenska</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=it" lang="it"><img alt="Italian Language" class="language-flag" src="/static/application/italyFlag-esta-v1445883343000.png">Italiano</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=ja" lang="ja"><img alt="Japanese Language" class="language-flag" src="/static/application/japanFlag-esta-v1445883343000.png">日本語</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=ko" lang="ko"><img alt="Korean Language" class="language-flag" src="/static/application/koreaFlag-esta-v1445883343000.png">한국어</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-xs-12 col-md-3">
                                     <ul class="language-dropdown">
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=lv" lang="lv"><img alt="Latvian Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/latviaFlag-esta-v1445883343000.png">Latviešu</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=lt" lang="lt"><img alt="Lithuanian Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/lithuaniaFlag-esta-v1445883343000.png">Lietuvių</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=hu" lang="hu"><img alt="Hungarian Magyar Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/hungaryFlag-esta-v1445883343000.png">Magyar</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=nl" lang="nl"><img alt="Dutch Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/netherlandFlag-esta-v1445883343000.png">Nederlands</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=no" lang="no"><img alt="Norwegian Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/norwayFlag-esta-v1445883343000.png">Norsk</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=pt" lang="pt"><img alt="Portuguese Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/portugalFlag-esta-v1445883343000.png">Português</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=lv" lang="lv"><img alt="Latvian Language" class="language-flag" src="/static/application/latviaFlag-esta-v1445883343000.png">Latviešu</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=lt" lang="lt"><img alt="Lithuanian Language" class="language-flag" src="/static/application/lithuaniaFlag-esta-v1445883343000.png">Lietuvių</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=hu" lang="hu"><img alt="Hungarian Magyar Language" class="language-flag" src="/static/application/hungaryFlag-esta-v1445883343000.png">Magyar</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=nl" lang="nl"><img alt="Dutch Language" class="language-flag" src="/static/application/netherlandFlag-esta-v1445883343000.png">Nederlands</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=no" lang="no"><img alt="Norwegian Language" class="language-flag" src="/static/application/norwayFlag-esta-v1445883343000.png">Norsk</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=pt" lang="pt"><img alt="Portuguese Language" class="language-flag" src="/static/application/portugalFlag-esta-v1445883343000.png">Português</a></li>
                                     </ul>
                                 </div>
                                 <div class="col-xs-12 col-md-3">
                                     <ul class="language-dropdown">
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=sk" lang="sk"><img alt="Slovak Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/slovakiaFlag-esta-v1445883343000.png">Slovenčina</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=sl" lang="sl"><img alt="Slovene Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/sloveniaFlag-esta-v1445883343000.png">Slovenščina</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=fi" lang="fi"><img alt="Finnish Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/finlandFlag-esta-v1445883343000.png">Suomi</a></li>
-                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=sv" lang="sv"><img alt="Swedish Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/swedenFlag-esta-v1445883343000.png">Svenska</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=sk" lang="sk"><img alt="Slovak Language" class="language-flag" src="/static/application/slovakiaFlag-esta-v1445883343000.png">Slovenčina</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=sl" lang="sl"><img alt="Slovene Language" class="language-flag" src="/static/application/sloveniaFlag-esta-v1445883343000.png">Slovenščina</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=fi" lang="fi"><img alt="Finnish Language" class="language-flag" src="/static/application/finlandFlag-esta-v1445883343000.png">Suomi</a></li>
+                                        <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=sv" lang="sv"><img alt="Swedish Language" class="language-flag" src="/static/application/swedenFlag-esta-v1445883343000.png">Svenska</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -211,11 +211,11 @@ function addBeforeUnloadEvent(func) {
 	
 	<div id="logoGroup" class="row flag-header">
         <div id="CBPLogoLg" class="col-xs-6 col-sm-4">
-            <a id="cbpSiteLink" tabindex="0" href="http://www.cbp.gov/"><img alt="Official Seal of the U.S. Customs and Border Protection, U.S. Department of Homeland Security" title="Official Seal of the U.S. Customs and Border Protection, U.S. Department of Homeland Security" class="flag-logo flag-customs left" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/CBPlogoWhite-esta-v1445883344000.png"></a>
+            <a id="cbpSiteLink" tabindex="0" href="http://www.cbp.gov/"><img alt="Official Seal of the U.S. Customs and Border Protection, U.S. Department of Homeland Security" title="Official Seal of the U.S. Customs and Border Protection, U.S. Department of Homeland Security" class="flag-logo flag-customs left" src="/static/application/CBPlogoWhite-esta-v1445883344000.png"></a>
         </div>
         <div id="ESTALogoLgWhite" class="col-xs-6 col-sm-4 col-sm-push-4">
             <span class="sr-only hidden">ESTA - Electronic System for Travel Authorization | U.S. Department of Homeland Security</span>
-            <img alt="ESTA - Electronic System for Travel Authorization | U.S. Department of Homeland Security" title="ESTA - Electronic System for Travel Authorization | U.S. Department of Homeland Security" class="flag-logo flag-esta" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/estaLogoWhite-esta-v1445883344000.png"><span lang=""></span>
+            <img alt="ESTA - Electronic System for Travel Authorization | U.S. Department of Homeland Security" title="ESTA - Electronic System for Travel Authorization | U.S. Department of Homeland Security" class="flag-logo flag-esta" src="/static/application/estaLogoWhite-esta-v1445883344000.png"><span lang=""></span>
         </div>
 	</div>
 </div>
@@ -225,43 +225,43 @@ function addBeforeUnloadEvent(func) {
     <!-- Mobile version: Language button-->
     <div class="visible-xs language-header">
         <div class="visible-xs toggle-language">
-            <a tabindex="0" lang="en" id="languageDropMobile" class="button esta-language dropdown" title="Change Language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img alt="English Language" title="English Language" class="us-uk-flags language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/usUkFlag.png">English (U.S./U.K.) <span class="pull-right caret"></span></a>
+            <a tabindex="0" lang="en" id="languageDropMobile" class="button esta-language dropdown" title="Change Language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img alt="English Language" title="English Language" class="us-uk-flags language-flag" src="/static/application/usUkFlag.png">English (U.S./U.K.) <span class="pull-right caret"></span></a>
             <div id="languageDropSmall" aria-labelledby="languageDropMobile" role="menu" class="f-dropdown fixed-dropdown dropdown-menu content large language-dropdown" data-dropdown-content="">
                 <div class="row">
                    <div class="row">
                         <div class="col-md-12">
                             <ul class="language-dropdown">
-                                <li class="language-dropdown"><a href="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection.html" lang="en"><img alt="US Flag" title="US Flag Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/usFlag-esta-v1445883343000.png"><img alt="UK Flag" title="UK Flag Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/ukFlag-esta-v1445883343000.png">English (U.S./U.K.)</a></li>
+                                <li class="language-dropdown"><a href="/static/application/Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection.html" lang="en"><img alt="US Flag" title="US Flag Language" class="language-flag" src="/static/application/usFlag-esta-v1445883343000.png"><img alt="UK Flag" title="UK Flag Language" class="language-flag" src="/static/application/ukFlag-esta-v1445883343000.png">English (U.S./U.K.)</a></li>
                             </ul>
                             <hr>
                         </div>
                     </div>
                     <div class="row col-language">
                         <ul class="language-dropdown col-xs-6">
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=cs" lang="cs"><img alt="Czech Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/czechFlag-esta-v1445883343000.png">Čeština</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=zh_TW" lang="zh-Hant"><img alt="Chinese Language, Traditional" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/taiwanFlag-esta-v1445883343000.png">中文</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=da" lang="da"><img alt="Danish Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/denmarkFlag-esta-v1445883343000.png">Dansk</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=de" lang="de"><img alt="German Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/germanyFlag-esta-v1445883343000.png">Deutsch</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=et" lang="et"><img alt="Estonian Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/estoniaFlag-esta-v1445883343000.png">Eesti</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=el" lang="el"><img alt="Greek Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/greeceFlag-esta-v1445883343000.png">Ελληνικά</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=es" lang="es"><img alt="Spanish Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/spainFlag-esta-v1445883343000.png">Español</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=fr" lang="fr"><img alt="French Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/franceFlag-esta-v1445883343000.png">Français</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=is" lang="is"><img alt="Icelandic Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/icelandFlag-esta-v1445883343000.png">Íslenska</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=it" lang="it"><img alt="Italian Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/italyFlag-esta-v1445883343000.png">Italiano</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=ja" lang="ja"><img alt="Japanese Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/japanFlag-esta-v1445883343000.png">日本語</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=cs" lang="cs"><img alt="Czech Language" class="language-flag" src="/static/application/czechFlag-esta-v1445883343000.png">Čeština</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=zh_TW" lang="zh-Hant"><img alt="Chinese Language, Traditional" class="language-flag" src="/static/application/taiwanFlag-esta-v1445883343000.png">中文</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=da" lang="da"><img alt="Danish Language" class="language-flag" src="/static/application/denmarkFlag-esta-v1445883343000.png">Dansk</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=de" lang="de"><img alt="German Language" class="language-flag" src="/static/application/germanyFlag-esta-v1445883343000.png">Deutsch</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=et" lang="et"><img alt="Estonian Language" class="language-flag" src="/static/application/estoniaFlag-esta-v1445883343000.png">Eesti</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=el" lang="el"><img alt="Greek Language" class="language-flag" src="/static/application/greeceFlag-esta-v1445883343000.png">Ελληνικά</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=es" lang="es"><img alt="Spanish Language" class="language-flag" src="/static/application/spainFlag-esta-v1445883343000.png">Español</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=fr" lang="fr"><img alt="French Language" class="language-flag" src="/static/application/franceFlag-esta-v1445883343000.png">Français</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=is" lang="is"><img alt="Icelandic Language" class="language-flag" src="/static/application/icelandFlag-esta-v1445883343000.png">Íslenska</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=it" lang="it"><img alt="Italian Language" class="language-flag" src="/static/application/italyFlag-esta-v1445883343000.png">Italiano</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=ja" lang="ja"><img alt="Japanese Language" class="language-flag" src="/static/application/japanFlag-esta-v1445883343000.png">日本語</a></li>
                         </ul>
                         <ul class="language-dropdown col-xs-6">
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=ko" lang="ko"><img alt="Korean Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/koreaFlag-esta-v1445883343000.png">한국어</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=lv" lang="lv"><img alt="Latvian Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/latviaFlag-esta-v1445883343000.png">Latviešu</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=lt" lang="lt"><img alt="Lithuanian Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/lithuaniaFlag-esta-v1445883343000.png">Lietuvių</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=hu" lang="hu"><img alt="Hungarian Magyar Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/hungaryFlag-esta-v1445883343000.png">Magyar</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=nl" lang="nl"><img alt="Dutch Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/netherlandFlag-esta-v1445883343000.png">Nederlands</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=no" lang="no"><img alt="Norwegian Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/norwayFlag-esta-v1445883343000.png">Norsk</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=pt" lang="pt"><img alt="Portuguese Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/portugalFlag-esta-v1445883343000.png">Português</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=sk" lang="sk"><img alt="Slovak Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/slovakiaFlag-esta-v1445883343000.png">Slovenčina</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=sl" lang="sl"><img alt="Slovene Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/sloveniaFlag-esta-v1445883343000.png">Slovenščina</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=fi" lang="fi"><img alt="Finnish Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/finlandFlag-esta-v1445883343000.png">Suomi</a></li>
-                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=sv" lang="sv"><img alt="Swedish Language" class="language-flag" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/swedenFlag-esta-v1445883343000.png">Svenska</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=ko" lang="ko"><img alt="Korean Language" class="language-flag" src="/static/application/koreaFlag-esta-v1445883343000.png">한국어</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=lv" lang="lv"><img alt="Latvian Language" class="language-flag" src="/static/application/latviaFlag-esta-v1445883343000.png">Latviešu</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=lt" lang="lt"><img alt="Lithuanian Language" class="language-flag" src="/static/application/lithuaniaFlag-esta-v1445883343000.png">Lietuvių</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=hu" lang="hu"><img alt="Hungarian Magyar Language" class="language-flag" src="/static/application/hungaryFlag-esta-v1445883343000.png">Magyar</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=nl" lang="nl"><img alt="Dutch Language" class="language-flag" src="/static/application/netherlandFlag-esta-v1445883343000.png">Nederlands</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=no" lang="no"><img alt="Norwegian Language" class="language-flag" src="/static/application/norwayFlag-esta-v1445883343000.png">Norsk</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=pt" lang="pt"><img alt="Portuguese Language" class="language-flag" src="/static/application/portugalFlag-esta-v1445883343000.png">Português</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=sk" lang="sk"><img alt="Slovak Language" class="language-flag" src="/static/application/slovakiaFlag-esta-v1445883343000.png">Slovenčina</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=sl" lang="sl"><img alt="Slovene Language" class="language-flag" src="/static/application/sloveniaFlag-esta-v1445883343000.png">Slovenščina</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=fi" lang="fi"><img alt="Finnish Language" class="language-flag" src="/static/application/finlandFlag-esta-v1445883343000.png">Suomi</a></li>
+                            <li><a href="https://esta.cbp.dhs.gov/esta/application.html?execution=e1s1&language=sv" lang="sv"><img alt="Swedish Language" class="language-flag" src="/static/application/swedenFlag-esta-v1445883343000.png">Svenska</a></li>
                         </ul>
                     </div>
                 </div>
@@ -392,7 +392,7 @@ function addBeforeUnloadEvent(func) {
 		
 	
 
-    <form id="ETAApplication" action="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection.html" method="post">
+    <form id="ETAApplication" action="/static/application/Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection.html" method="post">
     	<input type="hidden" name="lang" value="">
 		<input id="readAndUnderstand" name="readAndUnderstand" type="hidden" value="true">
 		<input type="hidden" name="_page" value="application">
@@ -475,7 +475,7 @@ function addBeforeUnloadEvent(func) {
                 <div class="col-sm-4">
                     <div class="esta-passport-expander">
                         <h3 class="esta-application">SAMPLE PASSPORT</h3>
-                        <div id="sample-pass"><a href="javascript:void(0);" tabindex="0" data-target="#passportModal" data-toggle="modal"><i class="icon-search"></i><img id="passport" alt="Sample Passport" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/Utopian_passport-esta-v1445883344000.png"></a></div>
+                        <div id="sample-pass"><a href="javascript:void(0);" tabindex="0" data-target="#passportModal" data-toggle="modal"><i class="icon-search"></i><img id="passport" alt="Sample Passport" src="/static/application/Utopian_passport-esta-v1445883344000.png"></a></div>
                         <p class="esta-application">This sample passport displays the information you will need from applicant's passport. Information must be entered exactly as it appears in passport. Enlarge image to see more information.</p>
                     </div>
                 </div>
@@ -5251,7 +5251,7 @@ function addBeforeUnloadEvent(func) {
                 <div class="modal-body">
                     <p class="esta-content">The sample passport below is shown to provide general guidance as a sample to provide general guidance on the common fields to reference when filling out the ESTA application. Please refer to your own specific passport, and enter the information exactly as displayed</p>
                     <p class="esta-content">Please refer to the <strong><a href="https://esta.cbp.dhs.gov/esta/application.html?siteHelpAbout_10=go" class="esta-link" target="faq.jsp">Passport requirements for travel</a></strong> under Visa Waiver Program.</p>
-                    <div class="row"><div class="col-sm-4"><img alt="Sample Passport" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/Utopian_passport-esta-v1445883344000.png"></div><div class="col-sm-8"><h3 class="esta-content">MACHINE READABLE ZONE</h3><img alt="Detail of Machine Readable Zone of a sample passport" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/machineReadable-esta-v1445883345000.png"></div></div>
+                    <div class="row"><div class="col-sm-4"><img alt="Sample Passport" src="/static/application/Utopian_passport-esta-v1445883344000.png"></div><div class="col-sm-8"><h3 class="esta-content">MACHINE READABLE ZONE</h3><img alt="Detail of Machine Readable Zone of a sample passport" src="/static/application/machineReadable-esta-v1445883345000.png"></div></div>
                     <p class="esta-content"><b>1) Issuing Country</b><br>The passport country of issuance is your country of citizenship as it appears on your passport. The country of citizenship on your passport is the passport issuing authority, regardless of the country the passport was physically obtained in. Refer  to <a href="https://elis.uscis.dhs.gov/RoboHelp/External/media/pdf/list_of_country_codes.pdf" target="_blank">PDF of Country Codes</a> (<a href="https://get.adobe.com/reader/" target="_blank">Download Adobe Acrobat Reader</a>) for complete listing.</p>
                     <p class="esta-content"><b>2) Family Name</b><br>Enter your family name as it appears in the Machine Readable Zone of your passport.</p>
                     <p class="esta-content"><b>3) First (Given) Name</b><br>Enter your first (given) name as it appears in the Machine Readable Zone of your passport.</p>
@@ -5298,7 +5298,7 @@ function addBeforeUnloadEvent(func) {
 				</div>
 				<div class="modal-body">
 					<p class="esta-content">
-						ATTENTION: An e-passport is required to travel under the Visa Waiver Program.  Please check the front cover of your passport to see if it contains this symbol (<img src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/ePassportSymbol-sm-esta-v1445883345000.png" width="25" height="14" alt="">).  <br><br>If your current passport does not have this symbol, please go to your passport issuing agency to apply for an e-passport prior to submitting an ESTA application.  You may be denied boarding by your airline or denied entry into the United States if you do not travel with an e-passport.
+						ATTENTION: An e-passport is required to travel under the Visa Waiver Program.  Please check the front cover of your passport to see if it contains this symbol (<img src="/static/application/ePassportSymbol-sm-esta-v1445883345000.png" width="25" height="14" alt="">).  <br><br>If your current passport does not have this symbol, please go to your passport issuing agency to apply for an e-passport prior to submitting an ESTA application.  You may be denied boarding by your airline or denied entry into the United States if you do not travel with an e-passport.
 					</p>                        
 				</div>
 				<div class="modal-footer">
@@ -5338,16 +5338,16 @@ function addBeforeUnloadEvent(func) {
 
 	</div>
 
-<script type="text/javascript" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/esta-esta-v1445883346000.js"></script>
+<script type="text/javascript" src="/static/application/esta-esta-v1445883346000.js"></script>
 
 
-	<script type="text/javascript" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/passport-esta-v1445883345000.js"></script>
-	<script type="text/javascript" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/applicantInfo-esta-v1445883346000.js"></script>
+	<script type="text/javascript" src="/static/application/passport-esta-v1445883345000.js"></script>
+	<script type="text/javascript" src="/static/application/applicantInfo-esta-v1445883346000.js"></script>
 
  	<script type="text/javascript">
  		var yesLabel = 'Yes';
  	</script>	
-	<script type="text/javascript" src="./Applicant Information _ Official ESTA Application Website, U.S. Customs and Border Protection_files/unsavedWorkModal-esta-v1445883346000.js"></script>
+	<script type="text/javascript" src="/static/application/unsavedWorkModal-esta-v1445883346000.js"></script>
 
 
 	<script>
