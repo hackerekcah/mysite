@@ -15,3 +15,6 @@ CREATE DATABASE mysite;
 (4)When add new model:
 python manage.py makemigrations [app name]
 python manage.py migrate
+
+TODO:
+数据库应该用utf8编码
