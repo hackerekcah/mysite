@@ -13,5 +13,5 @@ sudo easy_install mysql-python
 mysql -u root -p(press enter,then enter password)
 CREATE DATABASE mysite;
 (4)When add new model:
-python manage.py makemigrations [model name here]
+python manage.py makemigrations [app name]
 python manage.py migrate
