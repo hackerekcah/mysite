@@ -97,7 +97,9 @@ class Applicant(models.Model):
     tuition_fee_type = models.CharField(max_length=1,choices=TUITION_FEE_CHOICES,null=True)
 
 
-
+class Test(models.Model):
+    surname = models.CharField(max_length=60)
+    given_name = models.CharField(max_length=60)
 
 
 
