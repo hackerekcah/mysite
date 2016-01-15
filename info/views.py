@@ -18,3 +18,6 @@ def to_db(request):
     newApt.save()
     return render(request, 'info/submit_result.html', {"postList": postList.items()})
 
+def test(request):
+    return render(request, 'info/test.html',{})
+

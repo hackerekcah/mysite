@@ -30,7 +30,7 @@ TUITION_FEE_CHOICES = (
 STUDENT_CATEGORY_CHOICES =(
     ('LANGUAGE','Chinese Language Student'),
     ('SELFPAID','Self-Financed Degree Student'),
-    ('CSC','CSC Scholarship Student'),
+    ('CSCORHIT','CSC/HIT Scholarship Student'),
     ('EXCHANGE','Exchange Student'),
 )
 
@@ -67,7 +67,7 @@ class Applicant(models.Model):
     passport_number = models.CharField(max_length=32)
 
     #护照有效期至
-    passport_expire_date = models.DateField()
+    passport_valid_until = models.DateField()
 
     #现持有效签证种类,可能取值为
     #JL(代表居留证件)，MQ(免签)，F,L,M,Q2,S2,X2,X1
@@ -80,7 +80,7 @@ class Applicant(models.Model):
     visa_number = models.CharField(max_length=32)
 
     #签证有效期至
-    visa_expire_date = models.DateField()
+    visa_valid_until = models.DateField()
 
     #学生类别,可能取值
     #LANGUAGE,SELFPAID,CSC,EXCHANGE

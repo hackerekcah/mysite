@@ -9,3 +9,9 @@ label span.info-required {
   line-height: 16px;
   padding: 0 0 0 3px;
 }
+
+form div.row {
+  /*border-bottom: 2px solid;*/
+  border-top: 2px solid;
+  border-color: #cccccc;
+}

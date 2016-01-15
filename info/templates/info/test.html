@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+
+    <link href="/static/info/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/static/info/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+    <script src="/static/info/js/jquery.min.js"></script>
+    <script src="/static/info/js/bootstrap.min.js"></script>
+
+    <script src="/static/info/js/bootstrap-datepicker.min.js"></script>
+
+
+</head>
+<body>
+
+<div class="input-group date">
+  <input type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+</div>
+
+
+                        <div class="form-group col-md-7">
+
+							<label for="applicant.date_of_birth" class="col-sm-6 control-label">
+								Date of Birth <span class="info-required">*</span>
+							</label>
+
+							<div class="input-group date col-sm-6">
+                                <input id="applicant.date_of_birth" name="applicant.date_of_birth" type="text" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+							</div>
+
+						</div>
+                        <div class="col-md-5" style="font-size: 15px" >
+                            <a href="#">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Choose the Nationality on Your Passport!"></span>
+                            </a>
+                        </div>
+
+
+
+
+<script>
+    $('.input-group.date').datepicker({
+        format: "yyyy/mm",
+        startView: 2,
+        clearBtn: true,
+        autoclose: true,
+        minViewMode: 1,
+});
+</script>
+
+
+
+</body>
+</html>

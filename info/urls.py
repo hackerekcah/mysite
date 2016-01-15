@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     #url(r'^submit/$', views.submit, name='submit'),
     url(r'^to_db/$', views.to_db, name='to_db'),
+    url(r'^test/$', views.test, name='test'),
 ]
