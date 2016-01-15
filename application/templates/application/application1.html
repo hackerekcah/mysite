@@ -3,10 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+
+
     <link id="mainStyle" rel="stylesheet" href="/static/application/styles-esta-v1446499383000.css" type="text/css">
+
+<!--[if lte IE 8]>
+    <link rel="stylesheet" type="text/css" href="/esta/css/ie/ie-esta-v1445883339000.css" />
+<![endif]-->
+<!--[if lte IE 7]>
+    <link rel="stylesheet" type="text/css" href="/esta/css/ie/bootstrap-ie7-esta-v1445883339000.css" />
+<![endif]-->
+
+
+<!-- - - Libraries - - -->
+<!--[if (!IE)|(gt IE 8)]><!-->
+	<script type="text/javascript" src="/static/application/jquery-esta-v1445883346000.js"></script>
+<!--<![endif]-->
+
+<!--[if lte IE 8]>
+  <script type="text/javascript" src="/esta/js/vendor/ie8/jquery-esta-v1445883345000.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="/static/application/bootstrap-3.3.2-esta-v1445883346000.js"></script>
+<script type="text/javascript" src="/static/application/bootstrap-accessibility_1.0.3-esta-v1445883346000.js"></script>
+<script type="text/javascript">
+	var contextPath = '/esta';
+	var pageId = 'applicantInfo';
+</script>
+<script type="text/javascript" src="/static/application/esta.main-esta-v1445883345000.js"></script>
+
+	<script type="text/javascript">
+
+	 	// var to be used by esta.js to transalte the Confirm and Continue button
+	 	var confirmAndContinueLabel = 'CONFIRM & CONTINUE';
+
+		/* begin addLoadEvent function */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function() {
+					if (oldonload) {
+						oldonload();
+					}
+				func();
+			};
+			}
+	   	}
+
+		addLoadEvent(function() {
+			/* more code to run on page load */
+			//addLoadEvent(openClose);
+		});
+		/* end addLoadEvent function */
+
+
+
+		function showSessionConfirm() {
+			// Use " to enclose the message becasue in French the message contains a single quote.
+			var reload = confirm( "Your session is about to timeout. Please click OK if you need more time." );
+			if( reload ) {
+				// Reloading the image refreshes the session.
+				var sessionImage = new Image();
+				sessionImage.src = "/esta/refresh/" + (new Date()).getTime() + ".jpg";
+
+				// Set the timer again, if they're really slow...
+				setTimeout("showSessionConfirm()", 1020000);
+			}
+		}
+
+		function sessionWarning() {
+			setTimeout("showSessionConfirm()", 1020000);
+		}
+
+		addLoadEvent(sessionWarning);
+
+
+
+function addBeforeUnloadEvent(func) {
+	var old = document.body.onbeforeunload;
+	if (typeof document.body.onbeforeunload != 'function') {
+		document.body.onbeforeunload = func;
+	} else {
+		document.body.onbeforeunload = function() {
+			if (old) {
+				old();
+			}
+			func();
+		};
+	}
+}
+
+</script>
+
+
+
+
+
+
+
 </head>
 <body>
-    <form id="ETAApplication" action="/application/submit/" method="post">
+    <form id="ETAApplication" action="/application/to_db/" method="post">
         {% csrf_token %}
         <div id="content" class="container esta-application" tabindex="-1">
             <hr class="margin-less">

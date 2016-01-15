@@ -1,0 +1,11 @@
+.info-required {
+  color: #cc1f36;
+  font-weight: bold;
+}
+
+label span.info-required {
+  font-size: 16px;
+  display: inline-block;
+  line-height: 16px;
+  padding: 0 0 0 3px;
+}

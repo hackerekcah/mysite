@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'polls',
     'books',
     'application',
+    'info',
 )
 
 MIDDLEWARE_CLASSES = (

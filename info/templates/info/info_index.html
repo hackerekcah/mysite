@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Info Index</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="/static/info/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/info/css/style.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					 
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+					</button> <a class="navbar-brand" href="#">Brand</a>
+				</div>
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li class="active">
+							<a href="#">Link</a>
+						</li>
+						<li>
+							<a href="#">Link</a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#">Action</a>
+								</li>
+								<li>
+									<a href="#">Another action</a>
+								</li>
+								<li>
+									<a href="#">Something else here</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									<a href="#">Separated link</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									<a href="#">One more separated link</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<form class="navbar-form navbar-left" role="search">
+						<div class="form-group">
+							<input type="text" class="form-control">
+						</div> 
+						<button type="submit" class="btn btn-default">
+							Submit
+						</button>
+					</form>
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<a href="#">Link</a>
+						</li>
+						<li class="dropdown">
+							 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong class="caret"></strong></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#">Action</a>
+								</li>
+								<li>
+									<a href="#">Another action</a>
+								</li>
+								<li>
+									<a href="#">Something else here</a>
+								</li>
+								<li class="divider">
+								</li>
+								<li>
+									<a href="#">Separated link</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				
+			</nav>
+
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-2">
+				</div>
+				<div class="col-md-8">
+					<form class="form-horizontal" role="form" action="/info/to_db/" method="post">
+                        {% csrf_token %}
+						<div class="form-group col-md-7">
+
+							<label for="applicant.surname" class="col-sm-6 control-label">
+								Surname / Family Name<span class="info-required">*</span>
+							</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" id="applicant.surname" name="applicant.surname" style="text-transform: uppercase"/>
+							</div>
+						</div>
+						<div class="form-group col-md-7">
+
+							<label for="applicant.given_name" class="col-sm-6 control-label">
+								Given Name<span class="info-required">*</span>
+							</label>
+                            <span data-toggle="tooltip" tabindex="0" data-container="form" class="tooltip-trigger" title="" data-original-title="In the Family Name field, enter your family name as the family name appears on your passport under the Family Name or Surname field. The family name is required to complete the application."><i class="icon-helpicon"></i></span>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" id="applicant.given_name" name="applicant.given_name" style="text-transform: uppercase"/>
+							</div>
+						</div>
+
+
+
+
+                        <div class="form-group">
+							<div class="col-sm-offset-2 col-sm-8">
+
+								<button type="submit" class="btn btn-default">
+									Submit
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-2">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+    <script src="/static/info/js/jquery.min.js"></script>
+    <script src="/static/info/js/bootstrap.min.js"></script>
+    <script src="/static/info/js/scripts.js"></script>
+  </body>
+</html>

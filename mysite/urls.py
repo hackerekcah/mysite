@@ -20,6 +20,7 @@ from polls import views
 
 urlpatterns = [
     url(r'^polls/', include('polls.urls')),
+    url(r'^info/',include('info.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^application/',include('application.urls')),
     url(r'^accounts/login/$',  login),

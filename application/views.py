@@ -19,7 +19,7 @@ def submit(request):
 
 def to_db(request):
 
-    postList = request.POST.items()
-    newApt = Test(surname=postList.applicant.lastName,given_name=postList.applicant.lastName)
+    postList = request.POST
+    newApt = Test(surname=postList["applicant.lastName"],given_name=postList["applicant.lastName"])
     newApt.save()
-    return render(request, 'application/submit_result.html', {"postList": postList})
+    return render(request, 'application/submit_result.html', {"postList": postList.items()})
