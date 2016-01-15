@@ -39,14 +39,14 @@ class Applicant(models.Model):
     surname = models.CharField(max_length=60)
     given_name = models.CharField(max_length=60)
 
+    #sex is gender,which is M or F
+    sex = models.CharField(max_length=1,choices=GENDER_CHOICES)
+
     #nationality use the alpha2 country code for efficiency
     nationality = models.CharField(max_length=2)
 
     #date of birth
     date_of_birth =models.DateField()
-
-    #sex is gender,which is M or F
-    sex = models.CharField(max_length=1,choices=GENDER_CHOICES)
 
     #在华地址
     address_in_china = models.CharField(max_length=250)

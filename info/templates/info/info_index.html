@@ -115,18 +115,90 @@
 								<input type="text" class="form-control" id="applicant.surname" name="applicant.surname" style="text-transform: uppercase"/>
 							</div>
 						</div>
+                        <div class="col-md-5" style="font-size: 15px" >
+                            <a href="#">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Write Your Family Name/Surname On your passport"></span>
+                            </a>
+                        </div>
 						<div class="form-group col-md-7">
 
 							<label for="applicant.given_name" class="col-sm-6 control-label">
-								Given Name<span class="info-required">*</span>
+								Given Name / First Name<span class="info-required">*</span>
 							</label>
-                            <span data-toggle="tooltip" tabindex="0" data-container="form" class="tooltip-trigger" title="" data-original-title="In the Family Name field, enter your family name as the family name appears on your passport under the Family Name or Surname field. The family name is required to complete the application."><i class="icon-helpicon"></i></span>
+
 							<div class="col-sm-6">
 								<input type="text" class="form-control" id="applicant.given_name" name="applicant.given_name" style="text-transform: uppercase"/>
 							</div>
+
 						</div>
+                        <div class="col-md-5" style="font-size: 15px" >
+                            <a href="#">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Write Your First Name/Given Name on passport.If you have Middle name, write here too"></span>
+                            </a>
+                        </div>
 
+                        <div class="form-group col-md-7">
 
+							<label for="applicant.sex" class="col-sm-6 control-label">
+								Gender <span class="info-required">*</span>
+							</label>
+
+							<div class="col-sm-6">
+						        <select id="applicant.sex" name="applicant.sex" class="form-control">
+                                <option selected="" value="">&nbsp;</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                                </select>
+							</div>
+
+						</div>
+                        <div class="col-md-5" style="font-size: 15px" >
+                            <a href="#">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Choose the Gender on Your Passport!"></span>
+                            </a>
+                        </div>
+
+                        <div class="form-group col-md-7">
+
+							<label for="applicant.nationality" class="col-sm-6 control-label">
+								Nationality <span class="info-required">*</span>
+							</label>
+
+							<div class="col-sm-6">
+						        <select id="applicant.nationality" name="applicant.nationality" class="form-control">
+                                <option selected="" value="">&nbsp;</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                                </select>
+							</div>
+
+						</div>
+                        <div class="col-md-5" style="font-size: 15px" >
+                            <a href="#">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Choose the Nationality on Your Passport!"></span>
+                            </a>
+                        </div>
+
+                        <div class="form-group col-md-7">
+
+							<label for="applicant.date_of_birth" class="col-sm-6 control-label">
+								Date of Birth <span class="info-required">*</span>
+							</label>
+
+							<div class="col-sm-6">
+						        <select id="applicant.nationality" name="applicant.nationality" class="form-control">
+                                <option selected="" value="">&nbsp;</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                                </select>
+							</div>
+
+						</div>
+                        <div class="col-md-5" style="font-size: 15px" >
+                            <a href="#">
+                            <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Choose the Nationality on Your Passport!"></span>
+                            </a>
+                        </div>
 
 
                         <div class="form-group">
@@ -149,5 +221,9 @@
     <script src="/static/info/js/jquery.min.js"></script>
     <script src="/static/info/js/bootstrap.min.js"></script>
     <script src="/static/info/js/scripts.js"></script>
+
+    <script>
+        $(function () { $("[data-toggle='tool-tip']").tooltip(); });
+    </script>
   </body>
 </html>
