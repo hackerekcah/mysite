@@ -36,6 +36,7 @@ STUDENT_CATEGORY_CHOICES =(
 
 # Create your models here.
 class Applicant(models.Model):
+    #姓
     surname = models.CharField(max_length=60)
     given_name = models.CharField(max_length=60)
 
@@ -51,18 +52,6 @@ class Applicant(models.Model):
     #在华地址
     address_in_china = models.CharField(max_length=250)
 
-    #单位电话，默认为 86403742
-    #这一项其实没什么用，打印pdf的时候可以用常量
-    tel = models.CharField(max_length=8,default="86403742")
-
-    #在华学校，默认为 哈尔滨工业大学
-    #这一项其实没什么用，打印pdf的时候可以用常量
-    school_in_china = models.CharField(max_length=32,default="哈尔滨工业大学")
-
-    #护照类型，默认为 普通
-    #这一项其实没什么用，打印pdf的时候可以用常量
-    passport_type = models.CharField(max_length=8,default="普通")
-
     #护照号码
     passport_number = models.CharField(max_length=32)
 
@@ -73,31 +62,48 @@ class Applicant(models.Model):
     #JL(代表居留证件)，MQ(免签)，F,L,M,Q2,S2,X2,X1
     current_visa_category = models.CharField(max_length=2,choices=VISA_TYPE_CHOICES)
 
-    #入境日期
-    date_of_entry = models.DateField()
-
     #签证号码
     visa_number = models.CharField(max_length=32)
 
+    #x1入境日期
+    date_of_entry_x1 = models.DateField(null=True)
+
     #签证有效期至
-    visa_valid_until = models.DateField()
+    visa_valid_until_rp = models.DateField(null=True)
+
+    #special入境日期
+    date_of_entry_special = models.DateField(null=True)
+
+    duration_of_each_stay_special = models.PositiveSmallIntegerField(null=True)
+
+    once_left_china_x2 = models.NullBooleanField()
+
+    visa_valid_until_x2 = models.DateField(null=True)
+
+    date_of_departure_x2 = models.DateField(null=True)
+
+    date_of_reentry_x2 = models.DateField(null=True)
+
+    duration_of_each_stay_x2 = models.PositiveSmallIntegerField(null=True)
+
+    #签证有效期至，最终填在申请表上的，师弟用这个
+    visa_valid_until_final = models.DateField()
 
     #学生类别,可能取值
-    #LANGUAGE,SELFPAID,CSC,EXCHANGE
-    student_category = models.CharField(max_length=8)
+    #LANGUAGE,SELFPAID,CSCORHIT,EXCHANGE
+    student_category = models.CharField(max_length=8,choices=STUDENT_CATEGORY_CHOICES)
 
-    #是否填写过JW202
-    is_JW202 = models.NullBooleanField(null=True)
+    #学习期限，开始时间，举例2014-02-23
+    study_duration_start = models.DateField()
 
-    #预计毕业年份
-    graduate_year = models.CharField(max_length=4,null=True)
-
-    #预计毕业月份
-    graduate_month = models.CharField(max_length=2,null=True)
+    #学习期限，结束时间，用来判断是否在一年内毕业。还可判断交换时长，超过9个月就是一年的
+    study_duration_end = models.DateField()
 
     #现已缴纳学费类别
-    tuition_fee_type = models.CharField(max_length=1,choices=TUITION_FEE_CHOICES,null=True)
+    tuition_fee_type_language = models.CharField(max_length=1,choices=TUITION_FEE_CHOICES,null=True)
 
+    #现已缴纳学费类别，师弟不要用这个
+    tuition_fee_type_selfpaid = models.CharField(max_length=1,choices=TUITION_FEE_CHOICES,null=True)
 
-
-
+    #是否填写过JW202,可能取值True,Fals,Null
+    is_JW202_selfpaid = models.NullBooleanField(null=True)

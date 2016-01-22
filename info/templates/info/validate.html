@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Validate</title>
+
+    <link href="/static/info/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/css/formValidation.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="/static/info/js/bootstrap.min.js"></script>
+    <script src="/static/info/js/jquery.validate.min.js"></script>
+    <script src="/static/info/js/additional-methods.min.js"></script>
+
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/formValidation.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/formvalidation/0.6.1/js/framework/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap-wizard/1.2/jquery.bootstrap.wizard.min.js"></script>
+
+    <!-- Include Bootstrap Datepicker -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js"></script>
+
+    <!-- Include Fuel UX files -->
+    <link rel="stylesheet" href="//www.fuelcdn.com/fuelux/3.4.0/css/fuelux.min.css">
+    <script src="//www.fuelcdn.com/fuelux/3.4.0/js/fuelux.min.js"></script>
+
+    <link href="/static/info/css/style.css" rel="stylesheet">
+
+</head>
+
+
+<style type="text/css">
+/**
+ * Override feedback icon position
+ * See http://formvalidation.io/examples/adjusting-feedback-icon-position/
+ */
+#orderForm .form-control-feedback {
+    top: 0;
+    right: -15px;
+}
+</style>
+
+<body>
+
+<div class="fuelux">
+    <div class="wizard" id="orderWizard">
+        <ul class="steps">
+            <li data-step="1" class="active"><span class="badge">1</span> Passport Info<span class="chevron"></span></li>
+            <li data-step="2"><span class="badge">2</span> Visa Info<span class="chevron"></span></li>
+            <li data-step="3"><span class="badge">3</span> Admission Info<span class="chevron"></span></li>
+        </ul>
+
+        <div class="actions">
+            <button type="button" class="btn btn-default btn-prev"><span class="glyphicon glyphicon-arrow-left"></span>Prev</button>
+            <button type="button" class="btn btn-default btn-next" data-last="Order">Next<span class="glyphicon glyphicon-arrow-right"></span></button>
+        </div>
+
+        <form id="orderForm" class="form-horizontal" action="/info/to_db/" method="post">
+            {% csrf_token %}
+            <div class="step-content">
+                <!-- The first panel -->
+                <div class="step-pane active" data-step="3">
+
+                        {#passport infomation #}
+                        <div class="row col-md-8 col-md-offset-2">
+
+                            <div class="col-xs-12">
+                                <h3 class="">APPLICANT / PASSPORT INFORMATION</h3>
+                                <p class="">Refer to your <strong>passport</strong> and enter all information in the same format.</p>
+                            </div>
+
+                            {#surname#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.surname" class="col-sm-6 control-label">
+                                    Surname / Family Name<span class="info-required">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="applicant.surname" name="applicant.surname" style="text-transform: uppercase"/>
+                                </div>
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Write Your Family Name/Surname On your passport"></span>
+                                </a>
+                            </div>
+
+                            {#Given Name#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.given_name" class="col-sm-6 control-label">
+                                    Given Name / First Name<span class="info-required">*</span>
+                                </label>
+
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="applicant.given_name" name="applicant.given_name" style="text-transform: uppercase"/>
+                                </div>
+
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Write Your First Name/Given Name on passport.If you have Middle name, write here too"></span>
+                                </a>
+                            </div>
+
+                            {#Gender#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.sex" class="col-sm-6 control-label">
+                                    Gender <span class="info-required">*</span>
+                                </label>
+
+                                <div class="col-sm-6">
+                                    <select id="applicant.sex" name="applicant.sex" class="form-control">
+                                    <option selected="" value="">&nbsp;</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Choose the Gender on Your Passport!"></span>
+                                </a>
+                            </div>
+
+                            {#Nationality#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.nationality" class="col-sm-6 control-label">
+                                    Nationality <span class="info-required">*</span>
+                                </label>
+
+                                <div class="col-sm-6">
+                                    <select id="applicant.nationality" name="applicant.nationality" class="form-control">
+                                    <option selected="" value="">&nbsp;</option>
+                                    <option value="AF">
+                                        Afghanistan
+                                    </option>
+                                    <option value="AX">
+                                        Aland Islands
+                                    </option>
+                                    <option value="AL">
+                                        Albania
+                                    </option>
+                                    <option value="DZ">
+                                        Algeria
+                                    </option>
+                                    <option value="AS">
+                                        American Samoa
+                                    </option>
+                                    <option value="AD">
+                                        Andorra
+                                    </option>
+                                    <option value="AO">
+                                        Angola
+                                    </option>
+                                    <option value="AI">
+                                        Anguilla
+                                    </option>
+                                    <option value="AQ">
+                                        Antarctica
+                                    </option>
+                                    <option value="AG">
+                                        Antigua and Barbuda
+                                    </option>
+                                    <option value="AR">
+                                        Argentina
+                                    </option>
+                                    <option value="AM">
+                                        Armenia
+                                    </option>
+                                    <option value="AW">
+                                        Aruba
+                                    </option>
+                                    <option value="AU">
+                                        Australia
+                                    </option>
+                                    <option value="AT">
+                                        Austria
+                                    </option>
+                                    <option value="AZ">
+                                        Azerbaijan
+                                    </option>
+                                    <option value="BS">
+                                        Bahamas (The)
+                                    </option>
+                                    <option value="BH">
+                                        Bahrain
+                                    </option>
+                                    <option value="BD">
+                                        Bangladesh
+                                    </option>
+                                    <option value="BB">
+                                        Barbados
+                                    </option>
+                                    <option value="BY">
+                                        Belarus
+                                    </option>
+                                    <option value="BE">
+                                        Belgium
+                                    </option>
+                                    <option value="BZ">
+                                        Belize
+                                    </option>
+                                    <option value="BJ">
+                                        Benin
+                                    </option>
+                                    <option value="BM">
+                                        Bermuda
+                                    </option>
+                                    <option value="BT">
+                                        Bhutan
+                                    </option>
+                                    <option value="BO">
+                                        Bolivia
+                                    </option>
+                                    <option value="BA">
+                                        Bosnia and Herzegovina
+                                    </option>
+                                    <option value="BW">
+                                        Botswana
+                                    </option>
+                                    <option value="BV">
+                                        Bouvet Island
+                                    </option>
+                                    <option value="BR">
+                                        Brazil
+                                    </option>
+                                    <option value="IO">
+                                        British Indian Ocean Territory (the)
+                                    </option>
+                                    <option value="BN">
+                                        Brunei Darussalam
+                                    </option>
+                                    <option value="BG">
+                                        Bulgaria
+                                    </option>
+                                    <option value="BF">
+                                        Burkina Faso
+                                    </option>
+                                    <option value="BI">
+                                        Burundi
+                                    </option>
+                                    <option value="KH">
+                                        Cambodia
+                                    </option>
+                                    <option value="CM">
+                                        Cameroon
+                                    </option>
+                                    <option value="CA">
+                                        Canada
+                                    </option>
+                                    <option value="CV">
+                                        Cape Verde
+                                    </option>
+                                    <option value="KY">
+                                        Cayman Islands (the)
+                                    </option>
+                                    <option value="CF">
+                                        Central African Republic (the)
+                                    </option>
+                                    <option value="TD">
+                                        Chad
+                                    </option>
+                                    <option value="CL">
+                                        Chile
+                                    </option>
+                                    <option value="CN">
+                                        China
+                                    </option>
+                                    <option value="CX">
+                                        Christmas Island
+                                    </option>
+                                    <option value="CC">
+                                        Cocos (Keeling) Islands (the)
+                                    </option>
+                                    <option value="CO">
+                                        Colombia
+                                    </option>
+                                    <option value="KM">
+                                        Comoros
+                                    </option>
+                                    <option value="CG">
+                                        Congo
+                                    </option>
+                                    <option value="CD">
+                                        Congo (the Democratic Republic of the)
+                                    </option>
+                                    <option value="CK">
+                                        Cook Islands (the)
+                                    </option>
+                                    <option value="CR">
+                                        Costa Rica
+                                    </option>
+                                    <option value="CI">
+                                        Côte d'Ivoire
+                                    </option>
+                                    <option value="HR">
+                                        Croatia
+                                    </option>
+                                    <option value="CU">
+                                        Cuba
+                                    </option>
+                                    <option value="CY">
+                                        Cyprus
+                                    </option>
+                                    <option value="CZ">
+                                        Czech Republic (the)
+                                    </option>
+                                    <option value="DK">
+                                        Denmark
+                                    </option>
+                                    <option value="DJ">
+                                        Djibouti
+                                    </option>
+                                    <option value="DM">
+                                        Dominica
+                                    </option>
+                                    <option value="DO">
+                                        Dominican Republic (the)
+                                    </option>
+                                    <option value="EC">
+                                        Ecuador
+                                    </option>
+                                    <option value="EG">
+                                        Egypt
+                                    </option>
+                                    <option value="SV">
+                                        El Salvador
+                                    </option>
+                                    <option value="GQ">
+                                        Equatorial Guinea
+                                    </option>
+                                    <option value="ER">
+                                        Eritrea
+                                    </option>
+                                    <option value="EE">
+                                        Estonia
+                                    </option>
+                                    <option value="ET">
+                                        Ethiopia
+                                    </option>
+                                    <option value="FK">
+                                        Falkland Islands (the) [Malvinas]
+                                    </option>
+                                    <option value="FO">
+                                        Faroe Islands (the)
+                                    </option>
+                                    <option value="FJ">
+                                        Fiji
+                                    </option>
+                                    <option value="FI">
+                                        Finland
+                                    </option>
+                                    <option value="FR">
+                                        France
+                                    </option>
+                                    <option value="GF">
+                                        French Guiana
+                                    </option>
+                                    <option value="PF">
+                                        French Polynesia
+                                    </option>
+                                    <option value="TF">
+                                        French Southern Territories (the)
+                                    </option>
+                                    <option value="GA">
+                                        Gabon
+                                    </option>
+                                    <option value="GM">
+                                        Gambia (The)
+                                    </option>
+                                    <option value="GE">
+                                        Georgia
+                                    </option>
+                                    <option value="DE">
+                                        Germany
+                                    </option>
+                                    <option value="GH">
+                                        Ghana
+                                    </option>
+                                    <option value="GI">
+                                        Gibraltar
+                                    </option>
+                                    <option value="GR">
+                                        Greece
+                                    </option>
+                                    <option value="GL">
+                                        Greenland
+                                    </option>
+                                    <option value="GD">
+                                        Grenada
+                                    </option>
+                                    <option value="GP">
+                                        Guadeloupe
+                                    </option>
+                                    <option value="GU">
+                                        Guam
+                                    </option>
+                                    <option value="GT">
+                                        Guatemala
+                                    </option>
+                                    <option value="GG">
+                                        Guernsey
+                                    </option>
+                                    <option value="GN">
+                                        Guinea
+                                    </option>
+                                    <option value="GW">
+                                        Guinea-Bissau
+                                    </option>
+                                    <option value="GY">
+                                        Guyana
+                                    </option>
+                                    <option value="HT">
+                                        Haiti
+                                    </option>
+                                    <option value="HM">
+                                        Heard Island and McDonald Islands
+                                    </option>
+                                    <option value="VA">
+                                        Holy See (the) [Vatican City State]
+                                    </option>
+                                    <option value="HN">
+                                        Honduras
+                                    </option>
+                                    <option value="HK">
+                                        Hong Kong
+                                    </option>
+                                    <option value="HU">
+                                        Hungary
+                                    </option>
+                                    <option value="IS">
+                                        Iceland
+                                    </option>
+                                    <option value="IN">
+                                        India
+                                    </option>
+                                    <option value="ID">
+                                        Indonesia
+                                    </option>
+                                    <option value="IR">
+                                        Iran (the Islamic Republic of)
+                                    </option>
+                                    <option value="IQ">
+                                        Iraq
+                                    </option>
+                                    <option value="IE">
+                                        Ireland
+                                    </option>
+                                    <option value="IM">
+                                        Isle of Man
+                                    </option>
+                                    <option value="IL">
+                                        Israel
+                                    </option>
+                                    <option value="IT">
+                                        Italy
+                                    </option>
+                                    <option value="JM">
+                                        Jamaica
+                                    </option>
+                                    <option value="JP">
+                                        Japan
+                                    </option>
+                                    <option value="JE">
+                                        Jersey
+                                    </option>
+                                    <option value="JO">
+                                        Jordan
+                                    </option>
+                                    <option value="KZ">
+                                        Kazakhstan
+                                    </option>
+                                    <option value="KE">
+                                        Kenya
+                                    </option>
+                                    <option value="KI">
+                                        Kiribati
+                                    </option>
+                                    <option value="KP">
+                                        Korea (the Democratic People's Republic of)
+                                    </option>
+                                    <option value="KR">
+                                        Korea (the Republic of)
+                                    </option>
+                                    <option value="KW">
+                                        Kuwait
+                                    </option>
+                                    <option value="KG">
+                                        Kyrgyzstan
+                                    </option>
+                                    <option value="LA">
+                                        Lao People's Democratic Republic (the)
+                                    </option>
+                                    <option value="LV">
+                                        Latvia
+                                    </option>
+                                    <option value="LB">
+                                        Lebanon
+                                    </option>
+                                    <option value="LS">
+                                        Lesotho
+                                    </option>
+                                    <option value="LR">
+                                        Liberia
+                                    </option>
+                                    <option value="LY">
+                                        Libyan Arab Jamahiriya (the)
+                                    </option>
+                                    <option value="LI">
+                                        Liechtenstein
+                                    </option>
+                                    <option value="LT">
+                                        Lithuania
+                                    </option>
+                                    <option value="LU">
+                                        Luxembourg
+                                    </option>
+                                    <option value="MO">
+                                        Macao
+                                    </option>
+                                    <option value="MK">
+                                        Macedonia (the former Yugoslav Republic of)
+                                    </option>
+                                    <option value="MG">
+                                        Madagascar
+                                    </option>
+                                    <option value="MW">
+                                        Malawi
+                                    </option>
+                                    <option value="MY">
+                                        Malaysia
+                                    </option>
+                                    <option value="MV">
+                                        Maldives
+                                    </option>
+                                    <option value="ML">
+                                        Mali
+                                    </option>
+                                    <option value="MT">
+                                        Malta
+                                    </option>
+                                    <option value="MH">
+                                        Marshall Islands (the)
+                                    </option>
+                                    <option value="MQ">
+                                        Martinique
+                                    </option>
+                                    <option value="MR">
+                                        Mauritania
+                                    </option>
+                                    <option value="MU">
+                                        Mauritius
+                                    </option>
+                                    <option value="YT">
+                                        Mayotte
+                                    </option>
+                                    <option value="MX">
+                                        Mexico
+                                    </option>
+                                    <option value="FM">
+                                        Micronesia (the Federated States of)
+                                    </option>
+                                    <option value="MD">
+                                        Moldova (the Republic of)
+                                    </option>
+                                    <option value="MC">
+                                        Monaco
+                                    </option>
+                                    <option value="MN">
+                                        Mongolia
+                                    </option>
+                                    <option value="ME">
+                                        Montenegro
+                                    </option>
+                                    <option value="MS">
+                                        Montserrat
+                                    </option>
+                                    <option value="MA">
+                                        Morocco
+                                    </option>
+                                    <option value="MZ">
+                                        Mozambique
+                                    </option>
+                                    <option value="MM">
+                                        Myanmar
+                                    </option>
+                                    <option value="NA">
+                                        Namibia
+                                    </option>
+                                    <option value="NR">
+                                        Nauru
+                                    </option>
+                                    <option value="NP">
+                                        Nepal
+                                    </option>
+                                    <option value="NL">
+                                        Netherlands (the)
+                                    </option>
+                                    <option value="AN">
+                                        Netherlands Antilles (the)
+                                    </option>
+                                    <option value="NC">
+                                        New Caledonia
+                                    </option>
+                                    <option value="NZ">
+                                        New Zealand
+                                    </option>
+                                    <option value="NI">
+                                        Nicaragua
+                                    </option>
+                                    <option value="NE">
+                                        Niger (the)
+                                    </option>
+                                    <option value="NG">
+                                        Nigeria
+                                    </option>
+                                    <option value="NU">
+                                        Niue
+                                    </option>
+                                    <option value="NF">
+                                        Norfolk Island
+                                    </option>
+                                    <option value="MP">
+                                        Northern Mariana Islands (the)
+                                    </option>
+                                    <option value="NO">
+                                        Norway
+                                    </option>
+                                    <option value="OM">
+                                        Oman
+                                    </option>
+                                    <option value="PK">
+                                        Pakistan
+                                    </option>
+                                    <option value="PW">
+                                        Palau
+                                    </option>
+                                    <option value="PS">
+                                        Palestinian Territory (the Occupied)
+                                    </option>
+                                    <option value="PA">
+                                        Panama
+                                    </option>
+                                    <option value="PG">
+                                        Papua New Guinea
+                                    </option>
+                                    <option value="PY">
+                                        Paraguay
+                                    </option>
+                                    <option value="PE">
+                                        Peru
+                                    </option>
+                                    <option value="PH">
+                                        Philippines (the)
+                                    </option>
+                                    <option value="PN">
+                                        Pitcairn
+                                    </option>
+                                    <option value="PL">
+                                        Poland
+                                    </option>
+                                    <option value="PT">
+                                        Portugal
+                                    </option>
+                                    <option value="PR">
+                                        Puerto Rico
+                                    </option>
+                                    <option value="QA">
+                                        Qatar
+                                    </option>
+                                    <option value="RE">
+                                        Réunion
+                                    </option>
+                                    <option value="RO">
+                                        Romania
+                                    </option>
+                                    <option value="RU">
+                                        Russian Federation (the)
+                                    </option>
+                                    <option value="RW">
+                                        Rwanda
+                                    </option>
+                                    <option value="SH">
+                                        Saint Helena
+                                    </option>
+                                    <option value="KN">
+                                        Saint Kitts and Nevis
+                                    </option>
+                                    <option value="LC">
+                                        Saint Lucia
+                                    </option>
+                                    <option value="PM">
+                                        Saint Pierre and Miquelon
+                                    </option>
+                                    <option value="VC">
+                                        Saint Vincent and the Grenadines
+                                    </option>
+                                    <option value="WS">
+                                        Samoa
+                                    </option>
+                                    <option value="SM">
+                                        San Marino
+                                    </option>
+                                    <option value="ST">
+                                        Sao Tome and Principe
+                                    </option>
+                                    <option value="SA">
+                                        Saudi Arabia
+                                    </option>
+                                    <option value="SN">
+                                        Senegal
+                                    </option>
+                                    <option value="RS">
+                                        Serbia
+                                    </option>
+                                    <option value="SC">
+                                        Seychelles
+                                    </option>
+                                    <option value="SL">
+                                        Sierra Leone
+                                    </option>
+                                    <option value="SG">
+                                        Singapore
+                                    </option>
+                                    <option value="SK">
+                                        Slovakia
+                                    </option>
+                                    <option value="SI">
+                                        Slovenia
+                                    </option>
+                                    <option value="SB">
+                                        Solomon Islands (the)
+                                    </option>
+                                    <option value="SO">
+                                        Somalia
+                                    </option>
+                                    <option value="ZA">
+                                        South Africa
+                                    </option>
+                                    <option value="GS">
+                                        South Georgia and the South Sandwich Islands
+                                    </option>
+                                    <option value="ES">
+                                        Spain
+                                    </option>
+                                    <option value="LK">
+                                        Sri Lanka
+                                    </option>
+                                    <option value="SD">
+                                        Sudan (the)
+                                    </option>
+                                    <option value="SR">
+                                        Suriname
+                                    </option>
+                                    <option value="SJ">
+                                        Svalbard and Jan Mayen
+                                    </option>
+                                    <option value="SZ">
+                                        Swaziland
+                                    </option>
+                                    <option value="SE">
+                                        Sweden
+                                    </option>
+                                    <option value="CH">
+                                        Switzerland
+                                    </option>
+                                    <option value="SY">
+                                        Syrian Arab Republic (the)
+                                    </option>
+                                    <option value="TW">
+                                        Taiwan (Province of China)
+                                    </option>
+                                    <option value="TJ">
+                                        Tajikistan
+                                    </option>
+                                    <option value="TZ">
+                                        Tanzania,United Republic of
+                                    </option>
+                                    <option value="TH">
+                                        Thailand
+                                    </option>
+                                    <option value="TL">
+                                        Timor-Leste
+                                    </option>
+                                    <option value="TG">
+                                        Togo
+                                    </option>
+                                    <option value="TK">
+                                        Tokelau
+                                    </option>
+                                    <option value="TO">
+                                        Tonga
+                                    </option>
+                                    <option value="TT">
+                                        Trinidad and Tobago
+                                    </option>
+                                    <option value="TN">
+                                        Tunisia
+                                    </option>
+                                    <option value="TR">
+                                        Turkey
+                                    </option>
+                                    <option value="TM">
+                                        Turkmenistan
+                                    </option>
+                                    <option value="TC">
+                                        Turks and Caicos Islands (the)
+                                    </option>
+                                    <option value="TV">
+                                        Tuvalu
+                                    </option>
+                                    <option value="UG">
+                                        Uganda
+                                    </option>
+                                    <option value="UA">
+                                        Ukraine
+                                    </option>
+                                    <option value="AE">
+                                        United Arab Emirates (the)
+                                    </option>
+                                    <option value="GB">
+                                        United Kingdom (the)
+                                    </option>
+                                    <option value="US">
+                                        United States (the)
+                                    </option>
+                                    <option value="UM">
+                                        United States Minor Outlying Islands (the)
+                                    </option>
+                                    <option value="UY">
+                                        Uruguay
+                                    </option>
+                                    <option value="UZ">
+                                        Uzbekistan
+                                    </option>
+                                    <option value="VU">
+                                        Vanuatu
+                                    </option>
+                                    <option value="VE">
+                                        Venezuela
+                                    </option>
+                                    <option value="VN">
+                                        Viet Nam
+                                    </option>
+                                    <option value="VG">
+                                        Virgin Islands (British)
+                                    </option>
+                                    <option value="VI">
+                                        Virgin Islands (U.S.)
+                                    </option>
+                                    <option value="WF">
+                                        Wallis and Futuna
+                                    </option>
+                                    <option value="EH">
+                                        Western Sahara
+                                    </option>
+                                    <option value="YE">
+                                        Yemen
+                                    </option>
+                                    <option value="ZM">
+                                        Zambia
+                                    </option>
+                                    <option value="ZW">
+                                        Zimbabwe
+                                    </option>
+
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Choose the Nationality on Your Passport!"></span>
+                                </a>
+                            </div>
+
+                            {#date of birth#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.date_of_birth" class="col-sm-6 control-label">
+                                    Date of Birth <span class="info-required">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <div id="date_of_birth" class="input-group date">
+                                        <input id="applicant.date_of_birth" name="applicant.date_of_birth" type="text" class="form-control">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Choose the Date on Your Passport!"></span>
+                                </a>
+                            </div>
+
+                            {#passport number#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.passport_number" class="col-sm-6 control-label">
+                                    Passport Number<span class="info-required">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="applicant.passport_number" name="applicant.passport_number" style="text-transform: uppercase"/>
+                                </div>
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Write Your Passport Number On your passport"></span>
+                                </a>
+                            </div>
+
+                            {#passport valid until#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.passport_valid_until" class="col-sm-6 control-label">
+                                    Passport Date of Expiry <span class="info-required">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <div id="passport_valid_until" class="input-group date">
+                                        <input id="applicant.passport_valid_until" name="applicant.passport_valid_until" type="text" class="form-control">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Choose the Date of Expiry on Your Passport!"></span>
+                                </a>
+                            </div>
+                        </div>
+                </div>
+
+                <!-- The second panel -->
+                <div class="step-pane" data-step="2">
+                        {# visa infomation #}
+                        <div class="row col-md-8 col-md-offset-2">
+
+                            {#Visa Info#}
+                            <div class="col-xs-12">
+                                <h3 class="">VISA INFORMATION</h3>
+                                <p class="">Refer to your <strong>visa page</strong> on your passport</p>
+                            </div>
+
+                            {#Current Visa Cateogry#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.current_visa_category" class="col-sm-6 control-label">
+                                    Current Visa Category <span class="info-required">*</span>
+                                </label>
+
+                                <div class="col-sm-6">
+                                    <select id="applicant.current_visa_category" name="applicant.current_visa_category" class="form-control">
+                                        <option selected="" value="">&nbsp;</option>
+                                        <option value="MQ">Visa Free(免签)</option>
+                                        <option value="JL">Residence Permit(外国人居留许可)</option>
+                                        <option value="F">F</option>
+                                        <option value="L">L</option>
+                                        <option value="M">M</option>
+                                        <option value="Q2">Q2</option>
+                                        <option value="S2">S2</option>
+                                        <option value="X1">X1</option>
+                                        <option value="X2">X2</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to visa page on your passport.If you still don't know your visa category, pleas go to ISC office 306 for help."></span>
+                                </a>
+                            </div>
+
+
+                            {#visa number#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.visa_number" class="col-sm-6 control-label">
+                                    Visa Number<span class="info-required">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="applicant.visa_number" name="applicant.visa_number" style="text-transform: uppercase"/>
+                                </div>
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to visa page on your passport!"></span>
+                                </a>
+                            </div>
+                        </div>
+
+                        {# X1 #}
+                        <div id="row_x1" class="row col-md-8 col-md-offset-2 text-muted">
+                            <div class="col-xs-12">
+                                <h3 class="">For <strong>[X1]</strong> only</h3>
+                                <p class="">Refer to your <strong>visa page</strong> on your passport</p>
+                            </div>
+                            <fieldset id="fieldset_x1" class="col-md-12" disabled>
+
+                                {#date of entry#}
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.date_of_entry_x1" class="col-sm-6 control-label">
+                                        Date of Entry <span class="info-required">*</span>
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <div id="date_of_entry_x1" class="input-group date">
+                                            <input id="applicant.date_of_entry_x1" name="applicant.date_of_entry_x1" type="text" class="form-control">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>
+                                    </a>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        {#  Residence Permit #}
+                        <div id="row_rp" class="row col-md-8 col-md-offset-2 text-muted">
+                            <div class="col-xs-12">
+                                <h3 class="">For <strong>[Residence Permit]</strong> only</h3>
+                                <p class="">Refer to your <strong>visa page</strong> on your passport</p>
+                            </div>
+
+                            <fieldset id="fieldset_rp" class="col-md-12" disabled>
+
+                                {#valid until#}
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.visa_valid_until_rp" class="col-sm-6 control-label">
+                                        Visa Valid Until <span class="info-required">*</span>
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <div id="visa_valid_until_rp" class="input-group date">
+                                            <input id="applicant.visa_valid_until_rp" name="applicant.visa_valid_until_rp" type="text" class="form-control">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>
+                                    </a>
+                                </div>
+                            </fieldset>
+
+                        </div>
+
+                    {#  F L M Q2 S2 #}
+                        <div id="row_special" class="row col-md-8 col-md-offset-2 text-muted">
+                            <div class="col-xs-12">
+                                <h3 class="">For <strong>[F] / [L] / [M] / [Q2] / [S2]</strong> only</h3>
+                                <p class="">Refer to your <strong>visa page</strong> on your passport</p>
+                            </div>
+                            <fieldset id="fieldset_special" class="col-xs-12" disabled>
+                                {#Date of Entry Specill#}
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.date_of_entry_special" class="col-sm-6 control-label">
+                                        Date of Entry <span class="info-required">*</span>
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <div id="date_of_entry_special" class="input-group date">
+                                            <input id="applicant.date_of_entry_special" name="applicant.date_of_entry_special" type="text" class="form-control">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>
+                                    </a>
+                                </div>
+
+                                {#Duration of Each Stay Specill#}
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.duration_of_each_stay_special" class="col-sm-6 control-label">
+                                        Days After Entry<span class="info-required">*</span>
+                                        /<br>Duration of Each Stay
+                                    </label>
+                                    <div class="col-sm-6">
+                                            <input id="applicant.duration_of_each_stay_special" name="applicant.duration_of_each_stay_special" type="text" class="form-control">
+                                    </div>
+
+                                </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>
+                                    </a>
+                                </div>
+                            </fieldset>
+
+                        </div>
+
+                        {# x2 #}
+                        <div id="row_x2" class="row col-md-8 col-md-offset-2 text-muted">
+                            <div class="col-xs-12">
+                                <h3 class="">For <strong>[X2]</strong> only</h3>
+                                <p class="">Refer to your <strong>visa page</strong> on your passport</p>
+                            </div>
+                            <fieldset id="fieldset_x2" class="col-xs-12" disabled>
+
+                                {#Leave China#}
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.once_left_china" class="col-sm-6 control-label">
+                                        Did you leave China after<br> the visa issued?
+                                        <span class="info-required">*</span>
+                                    </label>
+
+                                    <div class="col-sm-6">
+                                        <select id="applicant.once_left_china" name="applicant.once_left_china" class="form-control">
+                                        <option selected="" value="">&nbsp;</option>
+                                        <option value="Y">Yes</option>
+                                        <option value="N">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>
+                                    </a>
+                                </div>
+
+                                <fieldset id="no_left_china" class="col-md-12 text-muted" disabled>
+                                    <div class="form-group col-md-7">
+
+                                        <label for="applicant.visa_valid_until_x2" class="col-sm-6 control-label">
+                                            Visa Valid Until <span class="info-required">*</span>
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <div id="visa_valid_until_x2" class="input-group date">
+                                                <input id="applicant.visa_valid_until_x2" name="applicant.visa_valid_until_x2" type="text" class="form-control">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-5" style="font-size: 15px" >
+                                        <a href="#">
+                                        <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>
+                                        </a>
+                                    </div>
+                                </fieldset>
+                                <fieldset id="yes_left_china" class="col-md-12 text-muted" disabled>
+                                    {# date of departure #}
+                                    <div class="form-group col-md-7">
+
+                                        <label for="applicant.date_of_departure_x2" class="col-sm-6 control-label">
+                                            Date of Departure <span class="info-required">*</span>
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <div id="date_of_departure_x2" class="input-group date">
+                                                <input id="applicant.date_of_departure_x2" name="applicant.date_of_departure_x2" type="text" class="form-control">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-5" style="font-size: 15px" >
+                                        <a href="#">
+                                        <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>
+                                        </a>
+                                    </div>
+                                    {# date of reentry #}
+                                    <div class="form-group col-md-7">
+
+                                        <label for="applicant.date_of_reentry_x2" class="col-sm-6 control-label">
+                                            Date of Reentry <span class="info-required">*</span>
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <div id="date_of_reentry_x2" class="input-group date">
+                                                <input id="applicant.date_of_reentry_x2" name="applicant.date_of_reentry_x2" type="text" class="form-control">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-5" style="font-size: 15px" >
+                                        <a href="#">
+                                        <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>
+                                        </a>
+                                    </div>
+                                    {#Duration of Each Stay X2#}
+                                    <div class="form-group col-md-7">
+
+                                        <label for="applicant.duration_of_each_stay_x2" class="col-sm-6 control-label">
+                                            Days Since Next Entry<span class="info-required">*</span>
+                                            /<br>Duration of Each Stay
+                                        </label>
+                                        <div class="col-sm-6">
+                                                <input id="applicant.duration_of_each_stay_x2" name="applicant.duration_of_each_stay_x2" type="text" class="form-control">
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-5" style="font-size: 15px" >
+                                        <a href="#">
+                                        <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>
+                                        </a>
+                                    </div>
+                                </fieldset>
+
+                            </fieldset>
+                        </div>
+                </div>
+
+
+                <!-- The Third panel -->
+                <div class="step-pane" data-step="1">
+                        {# Admission Info #}
+                        <div class="row col-md-8 col-md-offset-2">
+
+                            {#Admission info#}
+                            <div class="col-xs-12">
+                                <h3 class="">ADMISSION INFO</h3>
+                                <p class="">Refer to your <strong>ADMISSION NOTICE / FORM JW202 / FORM JW201</strong> </p>
+                            </div>
+
+                            {#student category#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.student_category" class="col-sm-6 control-label">
+                                    Student Category <span class="info-required">*</span>
+                                </label>
+
+                                <div class="col-sm-6">
+                                    <select id="applicant.student_category" name="applicant.student_category" class="form-control">
+                                    <option selected="" value="">&nbsp;</option>
+                                    <option value="LANGUAGE">Chinese Language Student</option>
+                                    <option value="SELFPAID">Self-Financed Degree Student</option>
+                                    <option value="CSCORHIT">CSC/HIT Scholarship Student</option>
+                                    <option value="EXCHANGE">Exchange Student</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your Admission Notice!"></span>
+                                </a>
+                            </div>
+
+
+                            {# Study Duration Starts From #}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.study_duration_start" class="col-sm-6 control-label">
+                                    Study Duration Starts From <span class="info-required">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <div id="study_duration_start" class="input-group date">
+                                        <input id="applicant.study_duration_start" name="applicant.study_duration_start" type="text" class="form-control">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>
+                                </a>
+                            </div>
+
+                            {# Study Duration End With #}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.study_duration_end" class="col-sm-6 control-label">
+                                    Study Duration Ends With <span class="info-required">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <div id="study_duration_end" class="input-group date">
+                                        <input id="applicant.study_duration_end" name="applicant.study_duration_end" type="text" class="form-control">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>
+                                </a>
+                            </div>
+
+                        </div>
+
+{#                        <div id="row_exchange" class="row col-md-8 col-md-offset-2 text-muted">#}
+{#                            <div class="col-xs-12">#}
+{#                                <h3 class="">For <strong>[Exchange Student]</strong> only</h3><br>#}
+{#                            </div>#}
+{#                            <fieldset id="fieldset_exchange" class="col-xs-12" disabled>#}
+                                {#Exchange Duration#}
+{#                                <div class="form-group col-md-7">#}
+{##}
+{#                                    <label for="applicant.exchange_duration" class="col-sm-6 control-label">#}
+{#                                        Exchange Duration#}
+{#                                        <span class="info-required">*</span>#}
+{#                                    </label>#}
+{##}
+{#                                    <div class="col-sm-6">#}
+{#                                        <select id="applicant.exchange_duration" name="applicant.exchange_duration" class="form-control">#}
+{#                                        <option selected="" value="">&nbsp;</option>#}
+{#                                        <option value="F">Full Year</option>#}
+{#                                        <option value="H">Half Year</option>#}
+{#                                        </select>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="col-md-5" style="font-size: 15px" >#}
+{#                                    <a href="#">#}
+{#                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>#}
+{#                                    </a>#}
+{#                                </div>#}
+{#                            </fieldset>#}
+{#                        </div>#}
+                        {# language student ####################################################}
+                        <div id="row_language" class="row col-md-8 col-md-offset-2 text-muted">
+                            <div class="col-xs-12">
+                                <h3 class="">For <strong>[Chinese Language Student]</strong> only</h3><br>
+                            </div>
+                            <fieldset id="fieldset_language" class="col-xs-12" disabled>
+                                {#tuition fee type#}
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.tuition_fee_type_language" class="col-sm-6 control-label">
+                                        Tuition Fee Prepaid <span class="info-required">*</span>
+                                    </label>
+
+                                    <div class="col-sm-6">
+                                        <select id="applicant.tuition_fee_type_language" name="applicant.tuition_fee_type_language" class="form-control">
+                                        <option selected="" value="">&nbsp;</option>
+                                        <option value="H">Half Year</option>
+                                        <option value="F">Full Year</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Choose the Gender on Your Passport!"></span>
+                                    </a>
+                                </div>
+                            </fieldset>
+                        </div>
+                        {#End of language student ####################################################}
+
+                        {# Self Financed Student ####################################################}
+                        <div id="row_selfpaid" class="row col-md-8 col-md-offset-2 text-muted">
+                            <div class="col-xs-12">
+                                <h3 class="">For <strong>[Self-Financed Degree Student]</strong> only</h3><br>
+                            </div>
+                            <fieldset id="fieldset_selfpaid" class="col-xs-12" disabled>
+                                {#tuition fee type#}
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.tuition_fee_type_selfpaid" class="col-sm-6 control-label">
+                                        Tuition Fee Prepaid <span class="info-required">*</span>
+                                    </label>
+
+                                    <div class="col-sm-6">
+                                        <select id="applicant.tuition_fee_type_selfpaid" name="applicant.tuition_fee_type_selfpaid" class="form-control">
+                                        <option selected="" value="">&nbsp;</option>
+                                        <option value="H">Half Year</option>
+                                        <option value="F">Full Year</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Choose the Gender on Your Passport!"></span>
+                                    </a>
+                                </div>
+
+
+
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.is_jw202" class="col-sm-6 control-label">
+                                        Did you fill Form #JW202 <span class="info-required">*</span>
+                                    </label>
+
+                                    <div class="col-sm-6">
+                                        <select id="applicant.is_jw202" name="applicant.is_jw202" class="form-control">
+                                        <option selected="" value="">&nbsp;</option>
+                                        <option value="Y">Yes</option>
+                                        <option value="N">No</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Choose the Gender on Your Passport!"></span>
+                                    </a>
+                                </div>
+
+                            </fieldset>
+                        </div>
+                        {#End of self-financed student ####################################################}
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="thankModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thank you</h4>
+            </div>
+            <div class="modal-body">
+                <p class="text-center">Thank you for your order</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+
+
+
+
+    var datepicker = $.fn.datepicker.noConflict(); // return $.fn.datepicker to previously assigned value
+    $.fn.bootstrapDP = datepicker;                 // give $().bootstrapDP the bootstrap-datepicker functionality
+
+    $('.input-group.date:not(#study_duration_start,#study_duration_end)')
+        .datepicker({
+            format: "yyyy-mm-dd",
+            startView: 2,
+            clearBtn: true,
+            autoclose: true,
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#orderForm').formValidation('revalidateField', "applicant." + e.currentTarget.id);
+        });
+
+        $('#study_duration_start,#study_duration_end')
+        .datepicker({
+            format: "yyyy-mm-dd",
+            startView: 2,
+            minViewMode: 'months',
+            clearBtn: true,
+            autoclose: true,
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#orderForm').formValidation('revalidateField', "applicant." + e.currentTarget.id);
+        });
+
+
+    $('#orderForm').formValidation({
+        framework: 'bootstrap',
+        icon: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        // This option will not ignore invisible fields which belong to inactive panels
+        excluded: ':disabled',
+        fields: {
+            "applicant.surname": {
+                validators: {
+                    notEmpty: {
+                        message: 'The Surname is required'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 60,
+                        message: 'Please enter value between %s and %s characters long'
+                    }
+                }
+            },
+            'applicant.given_name': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Given Name is required'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 60,
+                        message: 'Please enter value between %s and %s characters long'
+                    }
+                }
+            },
+            'applicant.sex': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Gender is required'
+                    }
+                }
+            },
+            'applicant.nationality': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Nationality is required'
+                    }
+                }
+            },
+            'applicant.date_of_birth': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Date of Birth is required'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD',
+                        message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.passport_number': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Passport Number is required'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 32,
+                        message: 'Please enter value between %s and %s characters long'
+                    }
+                }
+            },
+            'applicant.passport_valid_until': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Passport Date of Expiry is required'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD',
+                        message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.current_visa_category': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Current Visa Categoy is required'
+                    }
+                }
+            },
+            'applicant.visa_number': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Visa Number is required'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 32,
+                        message: 'Please enter value between %s and %s characters long'
+                    }
+                }
+            },
+            'applicant.date_of_entry': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Date of Entry is required'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD',
+                        message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.date_of_entry_x1': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Date of Entry is required'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD',
+                        message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.visa_valid_until_rp': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Visa Valid Until is required'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD',
+                        message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.date_of_entry_special': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Date of Entry is required'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD',
+                        message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.duration_of_each_stay_special': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Duration of Each Stay is required'
+                    },
+                    integer: {
+                        message: 'The input is not a valid integer'
+                    },
+                    lessThan: {
+                        value: '999',
+                        message: "Should be an integer less than 999"
+                    }
+                }
+            },
+            'applicant.once_left_china': {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required'
+                    }
+                }
+            },
+            'applicant.visa_valid_until_x2': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Visa Valid Until is required'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD',
+                        message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.date_of_departure_x2': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Date of Departure is required'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD',
+                        message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.date_of_reentry_x2': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Date of Reentry is required'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD',
+                        message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.duration_of_each_stay_x2': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Duration of Each Stay is required'
+                    },
+                    integer: {
+                        message: 'The input is not a valid integer'
+                    },
+                    lessThan: {
+                        value: '999',
+                        message: "Should be an integer less than 999"
+                    }
+                }
+            },
+            'applicant.student_category': {
+                validators: {
+                    notEmpty: {
+                        message: 'This student category is required'
+                    }
+                }
+            },
+            'applicant.study_duration_start': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Study Duration Start is required'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD',
+                        message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.study_duration_end': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Study Duration Start is required'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD',
+                        message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.tuition_fee_type_language': {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required'
+                    }
+                }
+            },
+            'applicant.tuition_fee_type_selfpaid': {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required'
+                    }
+                }
+            },
+            'applicant.is_jw202': {
+                validators: {
+                    notEmpty: {
+                        message: 'This field is required'
+                    }
+                }
+            },
+
+        }
+    });
+
+    {#id included ".", must be escaped by \\    #}
+    $('#applicant\\.current_visa_category').on('change', function (e) {
+
+            var visaCategorySelected = this.value;
+            switch (visaCategorySelected){
+                case "" :
+                case "MQ":
+                    $('fieldset').prop("disabled",true);
+                    $('#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
+                    break;
+                case "X1":
+                    {#disable all fieldset first#}
+                    $('fieldset').prop("disabled",true);
+                    {# enable fieldset_x1 #}
+                    $('#fieldset_x1').prop('disabled',false);
+
+                    $('#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
+                    $('#row_x1').removeClass("text-muted");
+
+                    console.log($('#fieldset_special input').val());
+
+                    break;
+                case "JL":
+                    $('fieldset').prop("disabled",true);
+                    $('#fieldset_rp').prop('disabled',false);
+
+                    $('#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
+                    $('#row_rp').removeClass("text-muted");
+                    break;
+                case "F":
+                case "S2":
+                case "L":
+                case "M":
+                case "Q2":
+                    $('fieldset').prop("disabled",true);
+                    $('#fieldset_special').prop('disabled',false);
+
+                   $('#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
+                    $('#row_special').removeClass("text-muted");
+                    break;
+                case "X2":
+                    $('fieldset').prop("disabled",true);
+                    $('#fieldset_x2').prop('disabled',false);
+
+                    $('#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
+                    $('#row_x2').removeClass("text-muted");
+
+                    $('#applicant\\.once_left_china').trigger("change");
+                    break;
+                default:
+                    alert("impossible!");
+            }
+        });
+
+     $('#applicant\\.once_left_china').on('change', function (e) {
+         var leftChinaSelected = this.value;
+         switch (leftChinaSelected){
+             case "" :
+                 $('#no_left_china,#yes_left_china').prop("disabled",true);
+                 $('#no_left_china,#yes_left_china').addClass("text-muted");
+                 break;
+             case "Y":
+                 $('#no_left_china,#yes_left_china').prop("disabled",true);
+                 $('#yes_left_china').prop("disabled",false);
+
+                 $('#no_left_china,#yes_left_china').addClass("text-muted");
+                 $('#yes_left_china').removeClass("text-muted");
+                 break;
+             case "N":
+                 $('#no_left_china,#yes_left_china').prop("disabled",true);
+                 $('#no_left_china').prop("disabled",false);
+
+                 $('#no_left_china,#yes_left_china').addClass("text-muted");
+                 $('#no_left_china').removeClass("text-muted");
+                 break;
+             default:
+                 alert("impossible!");
+         }
+     });
+
+
+    $('#applicant\\.student_category').on('change', function (e) {
+         var studentCategorySelected = this.value;
+         switch (studentCategorySelected){
+             case "" :
+             case "CSCORHIT":
+             case "EXCHANGE":
+                    $('fieldset').prop("disabled",true);
+                    $('#row_language,#row_selfpaid').addClass("text-muted");
+                 break;
+             case "SELFPAID":
+                    $('fieldset').prop("disabled",true);
+                    $('#fieldset_selfpaid').prop("disabled",false);
+
+                    $('#row_language,#row_selfpaid').addClass("text-muted");
+                    $('#row_selfpaid').removeClass("text-muted");
+                 break;
+             case "LANGUAGE":
+                    $('fieldset').prop("disabled",true);
+                    $('#fieldset_language').prop("disabled",false);
+
+                    $('#row_language,#row_selfpaid').addClass("text-muted");
+                    $('#row_language').removeClass("text-muted");
+                 break;
+             default:
+                 alert("impossible!");
+         }
+     });
+
+
+
+
+
+
+
+
+
+
+    $('#orderWizard')
+        // Call the wizard plugin
+        .wizard()
+
+        // Triggered when clicking the Next/Prev buttons
+        .on('actionclicked.fu.wizard', function(e, data) {
+            var fv         = $('#orderForm').data('formValidation'), // FormValidation instance
+                step       = data.step,                              // Current step
+                // The current step container
+                $container = $('#orderForm').find('.step-pane[data-step="' + step +'"]');
+
+            // Validate the container
+            fv.validateContainer($container);
+
+            var isValidStep = fv.isValidContainer($container);
+{#            if (isValidStep === false || isValidStep === null) {#}
+{#                // Do not jump to the target panel#}
+{#                e.preventDefault();#}
+{#            }#}
+        })
+
+        // Triggered when clicking the Complete button
+        .on('finished.fu.wizard', function(e) {
+            var fv         = $('#orderForm').data('formValidation'),
+                step       = $('#orderWizard').wizard('selectedItem').step,
+                $container = $('#orderForm').find('.step-pane[data-step="' + step +'"]');
+
+            // Validate the last step container
+            fv.validateContainer($container);
+
+            var isValidStep = fv.isValidContainer($container);
+            if (isValidStep === true) {
+                // Uncomment the following line to submit the form using the defaultSubmit() method
+                 fv.defaultSubmit();
+
+                // For testing purpose
+                //$('#thankModal').modal();
+            }
+        });
+
+});
+</script>
+
+
+    <script>
+        $(function () { $("[data-toggle='tool-tip']").tooltip(); });
+    </script>
+</body>
+</html>

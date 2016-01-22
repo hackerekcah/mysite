@@ -14,10 +14,12 @@ def index(request):
 
 def to_db(request):
     postList = request.POST
-    newApt = Applicant(surname=postList["applicant.surname"],given_name=postList["applicant.given_name"])
-    newApt.save()
+    # newApt = Applicant(surname=postList["applicant.surname"],given_name=postList["applicant.given_name"])
+    # newApt.save()
     return render(request, 'info/submit_result.html', {"postList": postList.items()})
 
 def test(request):
     return render(request, 'info/test.html',{})
+def validate(request):
+    return render(request, 'info/validate.html',{})
 
