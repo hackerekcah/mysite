@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Validate</title>
@@ -36,7 +36,7 @@
  * Override feedback icon position
  * See http://formvalidation.io/examples/adjusting-feedback-icon-position/
  */
-#orderForm .form-control-feedback {
+#visaApplyForm .form-control-feedback {
     top: 0;
     right: -15px;
 }
@@ -47,21 +47,92 @@
 <div class="fuelux">
     <div class="wizard" id="orderWizard">
         <ul class="steps">
-            <li data-step="1" class="active"><span class="badge">1</span> Passport Info<span class="chevron"></span></li>
-            <li data-step="2"><span class="badge">2</span> Visa Info<span class="chevron"></span></li>
-            <li data-step="3"><span class="badge">3</span> Admission Info<span class="chevron"></span></li>
+            <li data-step="1" class="active"><span class="badge">1</span> Address & Contact<span class="chevron"></span></li>
+            <li data-step="2"><span class="badge">2</span> Passport Info<span class="chevron"></span></li>
+            <li data-step="3"><span class="badge">3</span> Visa Info<span class="chevron"></span></li>
+            <li data-step="4"><span class="badge">4</span> Admission Info<span class="chevron"></span></li>
         </ul>
 
         <div class="actions">
             <button type="button" class="btn btn-default btn-prev"><span class="glyphicon glyphicon-arrow-left"></span>Prev</button>
-            <button type="button" class="btn btn-default btn-next" data-last="Order">Next<span class="glyphicon glyphicon-arrow-right"></span></button>
+            <button type="button" class="btn btn-default btn-next" data-last="Submit">Next<span class="glyphicon glyphicon-arrow-right"></span></button>
         </div>
 
-        <form id="orderForm" class="form-horizontal" action="/info/to_db/" method="post">
+        <form id="visaApplyForm" class="form-horizontal" action="/info/to_db/" method="post">
             {% csrf_token %}
             <div class="step-content">
+
                 <!-- The first panel -->
-                <div class="step-pane active" data-step="3">
+                <div class="step-pane active" data-step="1">
+
+                        {#Address in china #}
+                        <div class="row col-md-8 col-md-offset-2">
+
+                            <div class="col-xs-12">
+                                <h3 class="">ADDRESS IN CHINA</h3>
+                                <p class="">
+                                    According to <strong>Entry And Exit Administration Bureau of Harbin (哈尔滨出入境管理局):</strong><br>
+                                    <strong>*</strong> The "Address in China" field <strong>MUST</strong> be filled in Chinese.<br>
+                                    <strong>*</strong> The address should be identical to the address in <strong>《Basic Infomation Form for Foreigners》(《境外居留人员基本信息表》)</strong><br>
+                                    <strong>*</strong> If you don't know how to input Chinese characters, you may find a Chinese friend to help you.
+
+                                </p>
+                            </div>
+
+                            {#address in china#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.address_in_china" class="col-sm-6 control-label">
+                                    Address In China<span class="info-required">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <textarea class="form-control" id="applicant.address_in_china" name="applicant.address_in_china" rows="4" cols="3" placeholder="市/区/街道/其它详细地址"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Write Your Family Name/Surname On your passport"></span>
+                                </a>
+                            </div>
+
+                        </div>
+
+                        {#Contact #}
+                        <div class="row col-md-8 col-md-offset-2">
+
+                            <div class="col-xs-12">
+                                <h3 class="">CONTACT INFO</h3>
+                                <p class="">
+                                    <strong>*</strong> Leave your most commonly used mobile phone number in China.<br>
+                                    <strong>*</strong> You should be reachable though this phone number during the visa application procedure.<br>
+                                    <strong>*</strong> You shall take full responsibility for the delay of visa application if you are unreachable through this phone number.
+
+                                </p>
+                            </div>
+
+                            {#mobile phone in china#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.mobile_phone" class="col-sm-6 control-label">
+                                    Mobile Phone In China<span class="info-required">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="applicant.mobile_phone" name="applicant.mobile_phone"/>
+                                </div>
+                            </div>
+                            <div class="col-md-5" style="font-size: 15px" >
+                                <a href="#">
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Write Your Family Name/Surname On your passport"></span>
+                                </a>
+                            </div>
+
+                        </div>
+                </div>
+
+
+
+                <!-- The second panel -->
+                <div class="step-pane" data-step="2">
 
                         {#passport infomation #}
                         <div class="row col-md-8 col-md-offset-2">
@@ -95,7 +166,7 @@
                                 </label>
 
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="applicant.given_name" name="applicant.given_name" style="text-transform: uppercase"/>
+                                    <input type="text" class="form-control" id="applicant.given_name" name="applicant.given_name" placeholder="Middle name also here!" style="text-transform: uppercase"/>
                                 </div>
 
                             </div>
@@ -938,8 +1009,8 @@
                         </div>
                 </div>
 
-                <!-- The second panel -->
-                <div class="step-pane" data-step="2">
+                <!-- The Third panel -->
+                <div class="step-pane" data-step="3">
                         {# visa infomation #}
                         <div class="row col-md-8 col-md-offset-2">
 
@@ -1219,8 +1290,8 @@
                 </div>
 
 
-                <!-- The Third panel -->
-                <div class="step-pane" data-step="1">
+                <!-- The Fourth panel -->
+                <div class="step-pane" data-step="4">
                         {# Admission Info #}
                         <div class="row col-md-8 col-md-offset-2">
 
@@ -1448,7 +1519,7 @@ $(document).ready(function() {
         })
         .on('changeDate', function(e) {
             // Revalidate the date field
-            $('#orderForm').formValidation('revalidateField', "applicant." + e.currentTarget.id);
+            $('#visaApplyForm').formValidation('revalidateField', "applicant." + e.currentTarget.id);
         });
 
         $('#study_duration_start,#study_duration_end')
@@ -1461,11 +1532,11 @@ $(document).ready(function() {
         })
         .on('changeDate', function(e) {
             // Revalidate the date field
-            $('#orderForm').formValidation('revalidateField', "applicant." + e.currentTarget.id);
+            $('#visaApplyForm').formValidation('revalidateField', "applicant." + e.currentTarget.id);
         });
 
 
-    $('#orderForm').formValidation({
+    $('#visaApplyForm').formValidation({
         framework: 'bootstrap',
         icon: {
             valid: 'glyphicon glyphicon-ok',
@@ -1475,6 +1546,26 @@ $(document).ready(function() {
         // This option will not ignore invisible fields which belong to inactive panels
         excluded: ':disabled',
         fields: {
+            "applicant.address_in_china": {
+                validators: {
+                    notEmpty: {
+                        message: 'The Address In China is required'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 64,
+                        message: 'Please enter value between %s and %s characters long'
+                    }
+                }
+            },
+            "applicant.mobile_phone": {
+                validators: {
+                    phone: {
+                        country: 'CN',
+                        message: 'The value is not valid %s phone number'
+                    }
+                }
+            },
             "applicant.surname": {
                 validators: {
                     notEmpty: {
@@ -1856,26 +1947,26 @@ $(document).ready(function() {
 
         // Triggered when clicking the Next/Prev buttons
         .on('actionclicked.fu.wizard', function(e, data) {
-            var fv         = $('#orderForm').data('formValidation'), // FormValidation instance
+            var fv         = $('#visaApplyForm').data('formValidation'), // FormValidation instance
                 step       = data.step,                              // Current step
                 // The current step container
-                $container = $('#orderForm').find('.step-pane[data-step="' + step +'"]');
+                $container = $('#visaApplyForm').find('.step-pane[data-step="' + step +'"]');
 
             // Validate the container
             fv.validateContainer($container);
 
             var isValidStep = fv.isValidContainer($container);
-{#            if (isValidStep === false || isValidStep === null) {#}
-{#                // Do not jump to the target panel#}
-{#                e.preventDefault();#}
-{#            }#}
+            if (isValidStep === false || isValidStep === null) {
+                // Do not jump to the target panel
+                e.preventDefault();
+            }
         })
 
         // Triggered when clicking the Complete button
         .on('finished.fu.wizard', function(e) {
-            var fv         = $('#orderForm').data('formValidation'),
+            var fv         = $('#visaApplyForm').data('formValidation'),
                 step       = $('#orderWizard').wizard('selectedItem').step,
-                $container = $('#orderForm').find('.step-pane[data-step="' + step +'"]');
+                $container = $('#visaApplyForm').find('.step-pane[data-step="' + step +'"]');
 
             // Validate the last step container
             fv.validateContainer($container);
