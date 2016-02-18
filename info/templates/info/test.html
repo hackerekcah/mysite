@@ -43,46 +43,129 @@
 </style>
 
 <body>
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<form role="form" action="/info/to_db/" method="post">
-				<div class="form-group">
+        <form id="visaApplyForm" class="form-horizontal" action="/info/to_db/" method="post">
+            {% csrf_token %}
 
-					<label for="exampleInputEmail1">
-						Email address
-					</label>
-					<input type="email" class="form-control" id="exampleInputEmail1" />
-				</div>
-				<div class="form-group">
+            <div class="row col-md-8 col-md-offset-2">
+                             {#surname#}
+                            <div class="form-group col-md-7">
 
-					<label for="exampleInputPassword1">
-						Password
-					</label>
-					<input type="password" class="form-control" id="exampleInputPassword1" />
-				</div>
-				<div class="form-group">
+                                <label for="applicant.surname" class="col-sm-6 control-label">
+                                    Surname / Family Name<span class="info-required">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="applicant.surname" name="applicant.surname" style="text-transform: uppercase"/>
+                                </div>
+                            </div>
 
-					<label for="exampleInputFile">
-						File input
-					</label>
-					<input type="file" id="exampleInputFile" />
-					<p class="help-block">
-						Example block-level help text here.
-					</p>
-				</div>
-				<div class="checkbox">
 
-					<label>
-						<input type="checkbox" /> Check me out
-					</label>
-				</div>
-				<button type="submit" class="btn btn-default">
-					Submit
-				</button>
-			</form>
-		</div>
-	</div>
-</div>
+
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.tuition_fee_type_language" class="col-sm-6 control-label">
+                                    Tuition Fee Prepaid <span class="info-required">*</span>
+                                </label>
+
+                                <div class="col-sm-6">
+                                    <select id="applicant.tuition_fee_type_language" name="applicant.tuition_fee_type_language" class="form-control">
+                                    <option selected="" value="">&nbsp;</option>
+                                    <option value="H">Half Year</option>
+                                    <option value="F">Full Year</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+
+                            {#Date of Entry Specill#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.date_of_entry_special" class="col-sm-6 control-label">
+                                    Date of Entry <span class="info-required">*</span>
+                                </label>
+                                <div class="col-sm-6">
+                                    <div id="date_of_entry_special" class="input-group date">
+                                        <input id="applicant.date_of_entry_special" name="applicant.date_of_entry_special" type="text" class="form-control">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            {#Leave China#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.once_left_china_x2" class="col-sm-6 control-label">
+                                    Did you leave China after<br> the visa issued?
+                                    <span class="info-required">*</span>
+                                </label>
+
+                                <div class="col-sm-6">
+                                    <select id="applicant.once_left_china_x2" name="applicant.once_left_china_x2" class="form-control">
+                                    <option selected="" value="">&nbsp;</option>
+                                    <option value="True">Yes</option>
+                                    <option value="False">No</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            {#Duration of Each Stay X2#}
+                            <div class="form-group col-md-7">
+
+                                <label for="applicant.duration_of_each_stay_x2" class="col-sm-6 control-label">
+                                    Days Since Next Entry<span class="info-required">*</span>
+                                    /<br>Duration of Each Stay
+                                </label>
+                                <div class="col-sm-6">
+                                        <input id="applicant.duration_of_each_stay_x2" name="applicant.duration_of_each_stay_x2" type="text" class="form-control">
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-8">
+
+                                    <button type="submit" class="btn btn-default">
+                                        Submit
+                                    </button>
+                                </div>
+                            </div>
+            </div>
+        </form>
+
+<script>
+    var datepicker = $.fn.datepicker.noConflict(); // return $.fn.datepicker to previously assigned value
+    $.fn.bootstrapDP = datepicker;                 // give $().bootstrapDP the bootstrap-datepicker functionality
+
+    $('.input-group.date:not(#study_duration_start,#study_duration_end)')
+        .datepicker({
+            format: "yyyy-mm-dd",
+            startView: 2,
+            clearBtn: true,
+            autoclose: true,
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#visaApplyForm').formValidation('revalidateField', "applicant." + e.currentTarget.id);
+        });
+
+        $('#study_duration_start,#study_duration_end')
+        .datepicker({
+            format: "yyyy-mm-dd",
+            startView: 2,
+            minViewMode: 'months',
+            clearBtn: true,
+            autoclose: true,
+        })
+        .on('changeDate', function(e) {
+            // Revalidate the date field
+            $('#visaApplyForm').formValidation('revalidateField', "applicant." + e.currentTarget.id);
+        });
+</script>
 </body>
 </html>

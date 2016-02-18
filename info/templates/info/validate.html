@@ -58,7 +58,7 @@
             <button type="button" class="btn btn-default btn-next" data-last="Submit">Next<span class="glyphicon glyphicon-arrow-right"></span></button>
         </div>
 
-        <form id="visaApplyForm" class="form-horizontal" action="/info/to_db/" method="post">
+        <form id="visaApplyForm" class="form-horizontal" action="/info/info_to_db/" method="post">
             {% csrf_token %}
             <div class="step-content">
 
@@ -105,8 +105,8 @@
                                 <p class="">
                                     <strong>*</strong> Leave your most commonly used mobile phone number in China.<br>
                                     <strong>*</strong> You should be reachable though this phone number during the visa application procedure.<br>
-                                    <strong>*</strong> You shall take full responsibility for the delay of visa application if you are unreachable through this phone number.
-
+                                    <strong>*</strong> You shall take full responsibility for the delay of visa application if you are unreachable through this phone number.<br>
+                                    <strong>*</strong> If you don't have a phone number yet, you may input your friend's phone number, or you may buy one.
                                 </p>
                             </div>
 
@@ -1049,22 +1049,38 @@
                                 </a>
                             </div>
 
+                        </div>
 
-                            {#visa number#}
-                            <div class="form-group col-md-7">
+                        {# Visa Free #}
+                        <div id="row_visa_free" class="row col-md-8 col-md-offset-2 text-muted">
+                            <div class="col-xs-12">
+                                <h3 class="">For <strong>[Visa Free]</strong> only</h3>
+                                <p class="">Refer to your passport</p>
+                                <p class=""><strong>Note:</strong> If you come to China with visa free, you should be enrolled as a Chinese Language Student.</p>
+                                <p class=""><strong>Note:</strong> If you are not a Chinese Language Student, you need to abort this visa application procedure and go to ISC Room#306</p>
+                            </div>
+                            <fieldset id="fieldset_visa_free" class="col-md-12 visa-fieldset" disabled>
 
-                                <label for="applicant.visa_number" class="col-sm-6 control-label">
-                                    Visa Number<span class="info-required">*</span>
-                                </label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="applicant.visa_number" name="applicant.visa_number" style="text-transform: uppercase"/>
+                                {#date of entry#}
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.date_of_entry_visa_free" class="col-sm-6 control-label">
+                                        Date of Entry <span class="info-required">*</span>
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <div id="date_of_entry_visa_free" class="input-group date">
+                                            <input id="applicant.date_of_entry_visa_free" name="applicant.date_of_entry_visa_free" type="text" class="form-control">
+                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </div>
+
                                 </div>
-                            </div>
-                            <div class="col-md-5" style="font-size: 15px" >
-                                <a href="#">
-                                <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to visa page on your passport!"></span>
-                                </a>
-                            </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to your passport.On the day of entry,there should be a stamp issued by China Immigration Inspection(中国边检)"></span>
+                                    </a>
+                                </div>
+                            </fieldset>
                         </div>
 
                         {# X1 #}
@@ -1073,7 +1089,24 @@
                                 <h3 class="">For <strong>[X1]</strong> only</h3>
                                 <p class="">Refer to your <strong>visa page</strong> on your passport</p>
                             </div>
-                            <fieldset id="fieldset_x1" class="col-md-12" disabled>
+                            <fieldset id="fieldset_x1" class="col-md-12 visa-fieldset" disabled>
+
+                                {#visa number x1#}
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.visa_number_x1" class="col-sm-6 control-label">
+                                        Visa Number<span class="info-required">*</span>
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="applicant.visa_number_x1" name="applicant.visa_number_x1" style="text-transform: uppercase"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to visa page on your passport!"></span>
+                                    </a>
+                                </div>
+
 
                                 {#date of entry#}
                                 <div class="form-group col-md-7">
@@ -1104,7 +1137,24 @@
                                 <p class="">Refer to your <strong>visa page</strong> on your passport</p>
                             </div>
 
-                            <fieldset id="fieldset_rp" class="col-md-12" disabled>
+                            <fieldset id="fieldset_rp" class="col-md-12 visa-fieldset" disabled>
+
+                                {#visa number residence permit#}
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.visa_number_residence_permit" class="col-sm-6 control-label">
+                                        Visa Number<span class="info-required">*</span>
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="applicant.visa_number_residence_permit" name="applicant.visa_number_residence_permit" style="text-transform: uppercase"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to visa page on your passport!"></span>
+                                    </a>
+                                </div>
+
 
                                 {#valid until#}
                                 <div class="form-group col-md-7">
@@ -1135,7 +1185,24 @@
                                 <h3 class="">For <strong>[F] / [L] / [M] / [Q2] / [S2]</strong> only</h3>
                                 <p class="">Refer to your <strong>visa page</strong> on your passport</p>
                             </div>
-                            <fieldset id="fieldset_special" class="col-xs-12" disabled>
+                            <fieldset id="fieldset_special" class="col-xs-12 visa-fieldset" disabled>
+
+                                {#visa number special#}
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.visa_number_special" class="col-sm-6 control-label">
+                                        Visa Number<span class="info-required">*</span>
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="applicant.visa_number_special" name="applicant.visa_number_special" style="text-transform: uppercase"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to visa page on your passport!"></span>
+                                    </a>
+                                </div>
+
                                 {#Date of Entry Specill#}
                                 <div class="form-group col-md-7">
 
@@ -1183,18 +1250,34 @@
                                 <h3 class="">For <strong>[X2]</strong> only</h3>
                                 <p class="">Refer to your <strong>visa page</strong> on your passport</p>
                             </div>
-                            <fieldset id="fieldset_x2" class="col-xs-12" disabled>
+                            <fieldset id="fieldset_x2" class="col-xs-12 visa-fieldset" disabled>
+
+                                {#visa number x2#}
+                                <div class="form-group col-md-7">
+
+                                    <label for="applicant.visa_number_x2" class="col-sm-6 control-label">
+                                        Visa Number<span class="info-required">*</span>
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="applicant.visa_number_x2" name="applicant.visa_number_x2" style="text-transform: uppercase"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-5" style="font-size: 15px" >
+                                    <a href="#">
+                                    <span class="glyphicon glyphicon-question-sign" data-toggle="tool-tip" data-placement="right" title="Refer to visa page on your passport!"></span>
+                                    </a>
+                                </div>
 
                                 {#Leave China#}
                                 <div class="form-group col-md-7">
 
-                                    <label for="applicant.once_left_china" class="col-sm-6 control-label">
+                                    <label for="applicant.once_left_china_x2" class="col-sm-6 control-label">
                                         Did you leave China after<br> the visa issued?
                                         <span class="info-required">*</span>
                                     </label>
 
                                     <div class="col-sm-6">
-                                        <select id="applicant.once_left_china" name="applicant.once_left_china" class="form-control">
+                                        <select id="applicant.once_left_china_x2" name="applicant.once_left_china_x2" class="form-control">
                                         <option selected="" value="">&nbsp;</option>
                                         <option value="Y">Yes</option>
                                         <option value="N">No</option>
@@ -1400,7 +1483,7 @@
                             <div class="col-xs-12">
                                 <h3 class="">For <strong>[Chinese Language Student]</strong> only</h3><br>
                             </div>
-                            <fieldset id="fieldset_language" class="col-xs-12" disabled>
+                            <fieldset id="fieldset_language" class="col-xs-12 admission-fieldset" disabled>
                                 {#tuition fee type#}
                                 <div class="form-group col-md-7">
 
@@ -1431,7 +1514,7 @@
                             <div class="col-xs-12">
                                 <h3 class="">For <strong>[Self-Financed Degree Student]</strong> only</h3><br>
                             </div>
-                            <fieldset id="fieldset_selfpaid" class="col-xs-12" disabled>
+                            <fieldset id="fieldset_selfpaid" class="col-xs-12 admission-fieldset" disabled>
                                 {#tuition fee type#}
                                 <div class="form-group col-md-7">
 
@@ -1560,6 +1643,9 @@ $(document).ready(function() {
             },
             "applicant.mobile_phone": {
                 validators: {
+                    notEmpty: {
+                        message: 'The Mobile Phone is required'
+                    },
                     phone: {
                         country: 'CN',
                         message: 'The value is not valid %s phone number'
@@ -1645,7 +1731,19 @@ $(document).ready(function() {
                     }
                 }
             },
-            'applicant.visa_number': {
+
+            'applicant.date_of_entry_visa_free': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Date of Entry is required'
+                    },
+                    date: {
+                        format: 'YYYY-MM-DD',
+                        message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.visa_number_x1': {
                 validators: {
                     notEmpty: {
                         message: 'The Visa Number is required'
@@ -1654,17 +1752,6 @@ $(document).ready(function() {
                         min: 1,
                         max: 32,
                         message: 'Please enter value between %s and %s characters long'
-                    }
-                }
-            },
-            'applicant.date_of_entry': {
-                validators: {
-                    notEmpty: {
-                        message: 'The Date of Entry is required'
-                    },
-                    date: {
-                        format: 'YYYY-MM-DD',
-                        message: 'The date is not a valid'
                     }
                 }
             },
@@ -1679,6 +1766,18 @@ $(document).ready(function() {
                     }
                 }
             },
+            'applicant.visa_number_residence_permit': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Visa Number is required'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 32,
+                        message: 'Please enter value between %s and %s characters long'
+                    }
+                }
+            },
             'applicant.visa_valid_until_rp': {
                 validators: {
                     notEmpty: {
@@ -1687,6 +1786,18 @@ $(document).ready(function() {
                     date: {
                         format: 'YYYY-MM-DD',
                         message: 'The date is not a valid'
+                    }
+                }
+            },
+            'applicant.visa_number_special': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Visa Number is required'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 32,
+                        message: 'Please enter value between %s and %s characters long'
                     }
                 }
             },
@@ -1715,7 +1826,19 @@ $(document).ready(function() {
                     }
                 }
             },
-            'applicant.once_left_china': {
+            'applicant.visa_number_x2': {
+                validators: {
+                    notEmpty: {
+                        message: 'The Visa Number is required'
+                    },
+                    stringLength: {
+                        min: 1,
+                        max: 32,
+                        message: 'Please enter value between %s and %s characters long'
+                    }
+                }
+            },
+            'applicant.once_left_china_x2': {
                 validators: {
                     notEmpty: {
                         message: 'This field is required'
@@ -1825,31 +1948,38 @@ $(document).ready(function() {
 
     {#id included ".", must be escaped by \\    #}
     $('#applicant\\.current_visa_category').on('change', function (e) {
+            //alert("current visa category change");
 
             var visaCategorySelected = this.value;
             switch (visaCategorySelected){
                 case "" :
+                    $('fieldset.visa-fieldset').prop("disabled",true);
+                    $('#row_visa_free,#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
+                    break;
                 case "MQ":
-                    $('fieldset').prop("disabled",true);
-                    $('#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
+                    {#disable all fieldset first#}
+                    $('fieldset.visa-fieldset').prop("disabled",true);
+                    {# enable fieldset_visa_free #}
+                    $('#fieldset_visa_free').prop('disabled',false);
+
+                    $('#row_visa_free,#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
+                    $('#row_visa_free').removeClass("text-muted");
                     break;
                 case "X1":
                     {#disable all fieldset first#}
-                    $('fieldset').prop("disabled",true);
+                    $('fieldset.visa-fieldset').prop("disabled",true);
                     {# enable fieldset_x1 #}
                     $('#fieldset_x1').prop('disabled',false);
 
-                    $('#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
+                    $('#row_visa_free,#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
                     $('#row_x1').removeClass("text-muted");
-
-                    console.log($('#fieldset_special input').val());
 
                     break;
                 case "JL":
-                    $('fieldset').prop("disabled",true);
+                    $('fieldset.visa-fieldset').prop("disabled",true);
                     $('#fieldset_rp').prop('disabled',false);
 
-                    $('#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
+                    $('#row_visa_free,#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
                     $('#row_rp').removeClass("text-muted");
                     break;
                 case "F":
@@ -1857,27 +1987,28 @@ $(document).ready(function() {
                 case "L":
                 case "M":
                 case "Q2":
-                    $('fieldset').prop("disabled",true);
+                    $('fieldset.visa-fieldset').prop("disabled",true);
                     $('#fieldset_special').prop('disabled',false);
 
-                   $('#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
+                    $('#row_visa_free,#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
                     $('#row_special').removeClass("text-muted");
                     break;
                 case "X2":
-                    $('fieldset').prop("disabled",true);
+                    $('fieldset.visa-fieldset').prop("disabled",true);
                     $('#fieldset_x2').prop('disabled',false);
 
-                    $('#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
+                    $('#row_visa_free,#row_x1,#row_rp,#row_special,#row_x2').addClass("text-muted");
                     $('#row_x2').removeClass("text-muted");
 
-                    $('#applicant\\.once_left_china').trigger("change");
+                    $('#applicant\\.once_left_china_x2').trigger("change");
                     break;
                 default:
                     alert("impossible!");
             }
         });
 
-     $('#applicant\\.once_left_china').on('change', function (e) {
+     $('#applicant\\.once_left_china_x2').on('change', function (e) {
+         //alert("left china change");
          var leftChinaSelected = this.value;
          switch (leftChinaSelected){
              case "" :
@@ -1905,23 +2036,24 @@ $(document).ready(function() {
 
 
     $('#applicant\\.student_category').on('change', function (e) {
+         //alert("student category change");
          var studentCategorySelected = this.value;
          switch (studentCategorySelected){
              case "" :
              case "CSCORHIT":
              case "EXCHANGE":
-                    $('fieldset').prop("disabled",true);
+                    $('fieldset.admission-fieldset').prop("disabled",true);
                     $('#row_language,#row_selfpaid').addClass("text-muted");
                  break;
              case "SELFPAID":
-                    $('fieldset').prop("disabled",true);
+                    $('fieldset.admission-fieldset').prop("disabled",true);
                     $('#fieldset_selfpaid').prop("disabled",false);
 
                     $('#row_language,#row_selfpaid').addClass("text-muted");
                     $('#row_selfpaid').removeClass("text-muted");
                  break;
              case "LANGUAGE":
-                    $('fieldset').prop("disabled",true);
+                    $('fieldset.admission-fieldset').prop("disabled",true);
                     $('#fieldset_language').prop("disabled",false);
 
                     $('#row_language,#row_selfpaid').addClass("text-muted");
@@ -1931,14 +2063,6 @@ $(document).ready(function() {
                  alert("impossible!");
          }
      });
-
-
-
-
-
-
-
-
 
 
     $('#orderWizard')
@@ -1952,6 +2076,17 @@ $(document).ready(function() {
                 // The current step container
                 $container = $('#visaApplyForm').find('.step-pane[data-step="' + step +'"]');
 
+            //for all date field, need to revalidate in case of empty.
+            //if user use browser default value, it will be empty and however it will pass the validate,which is incorrect
+            $container.find('.input-group.date').each(function(){
+                //console.log($(this).attr('id'));
+                $('#visaApplyForm').formValidation('revalidateField', "applicant." + $(this).attr('id') );
+            });
+
+
+            //$('#visaApplyForm').formValidation('revalidateField', "applicant." + e.currentTarget.id);
+
+
             // Validate the container
             fv.validateContainer($container);
 
@@ -1960,6 +2095,7 @@ $(document).ready(function() {
                 // Do not jump to the target panel
                 e.preventDefault();
             }
+
         })
 
         // Triggered when clicking the Complete button
@@ -1968,12 +2104,22 @@ $(document).ready(function() {
                 step       = $('#orderWizard').wizard('selectedItem').step,
                 $container = $('#visaApplyForm').find('.step-pane[data-step="' + step +'"]');
 
+            //for all date field, need to revalidate in case of empty.
+            //if user use browser default value, it will be empty and however it will pass the validate,which is incorrect
+            $container.find('.input-group.date').each(function(){
+                //console.log($(this).attr('id'));
+                $('#visaApplyForm').formValidation('revalidateField', "applicant." + $(this).attr('id') );
+            });
+
+
             // Validate the last step container
             fv.validateContainer($container);
 
             var isValidStep = fv.isValidContainer($container);
             if (isValidStep === true) {
                 // Uncomment the following line to submit the form using the defaultSubmit() method
+
+
                  fv.defaultSubmit();
 
                 // For testing purpose

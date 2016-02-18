@@ -11,13 +11,13 @@ GENDER_CHOICES = (
 VISA_TYPE_CHOICES =(
     ('JL','居留证件'),
     ('MQ','免签'),
-    ('F',''),
-    ('L',''),
-    ('M',''),
-    ('Q2',''),
-    ('S2',''),
-    ('X2',''),
-    ('X1',''),
+    ('F','F'),
+    ('L','L'),
+    ('M','M'),
+    ('Q2','Q2'),
+    ('S2','S2'),
+    ('X2','X2'),
+    ('X1','X1'),
 )
 #tuition_fee
 TUITION_FEE_CHOICES = (
@@ -36,8 +36,16 @@ STUDENT_CATEGORY_CHOICES =(
 
 # Create your models here.
 class Applicant(models.Model):
+#################################Address & Contact################################
+    #在华地址
+    address_in_china = models.CharField(max_length=64)
+
+    #手机号码
+    mobile_phone = models.CharField(max_length=32)
+#################################Passport Info################################
     #姓
     surname = models.CharField(max_length=60)
+    #名
     given_name = models.CharField(max_length=60)
 
     #sex is gender,which is M or F
@@ -49,46 +57,58 @@ class Applicant(models.Model):
     #date of birth
     date_of_birth =models.DateField()
 
-    #在华地址
-    address_in_china = models.CharField(max_length=250)
-
     #护照号码
     passport_number = models.CharField(max_length=32)
 
     #护照有效期至
     passport_valid_until = models.DateField()
-
+#################################Visa Info######################################
     #现持有效签证种类,可能取值为
     #JL(代表居留证件)，MQ(免签)，F,L,M,Q2,S2,X2,X1
     current_visa_category = models.CharField(max_length=2,choices=VISA_TYPE_CHOICES)
 
+    #visa free 入境日期
+    date_of_entry_visa_free = models.DateField(null=True,blank=True)
+
     #签证号码
-    visa_number = models.CharField(max_length=32)
+    visa_number_x1 = models.CharField(max_length=32,null=True,blank=True)
 
     #x1入境日期
-    date_of_entry_x1 = models.DateField(null=True)
+    date_of_entry_x1 = models.DateField(null=True,blank=True)
+
+
+    #签证号码
+    visa_number_residence_permit = models.CharField(max_length=32,null=True,blank=True)
 
     #签证有效期至
-    visa_valid_until_rp = models.DateField(null=True)
+    visa_valid_until_rp = models.DateField(null=True,blank=True)
+
+
+    #签证号码
+    visa_number_special = models.CharField(max_length=32,null=True,blank=True)
 
     #special入境日期
-    date_of_entry_special = models.DateField(null=True)
+    date_of_entry_special = models.DateField(null=True,blank=True)
 
-    duration_of_each_stay_special = models.PositiveSmallIntegerField(null=True)
+    duration_of_each_stay_special = models.PositiveSmallIntegerField(null=True,blank=True)
+
+
+    #签证号码
+    visa_number_x2 = models.CharField(max_length=32,null=True,blank=True)
 
     once_left_china_x2 = models.NullBooleanField()
 
-    visa_valid_until_x2 = models.DateField(null=True)
+    visa_valid_until_x2 = models.DateField(null=True,blank=True)
 
-    date_of_departure_x2 = models.DateField(null=True)
+    date_of_departure_x2 = models.DateField(null=True,blank=True)
 
-    date_of_reentry_x2 = models.DateField(null=True)
+    date_of_reentry_x2 = models.DateField(null=True,blank=True)
 
-    duration_of_each_stay_x2 = models.PositiveSmallIntegerField(null=True)
+    duration_of_each_stay_x2 = models.PositiveSmallIntegerField(null=True,blank=True)
 
     #签证有效期至，最终填在申请表上的，师弟用这个
     visa_valid_until_final = models.DateField()
-
+#################################Admission Info######################################
     #学生类别,可能取值
     #LANGUAGE,SELFPAID,CSCORHIT,EXCHANGE
     student_category = models.CharField(max_length=8,choices=STUDENT_CATEGORY_CHOICES)
@@ -100,10 +120,38 @@ class Applicant(models.Model):
     study_duration_end = models.DateField()
 
     #现已缴纳学费类别
-    tuition_fee_type_language = models.CharField(max_length=1,choices=TUITION_FEE_CHOICES,null=True)
+    tuition_fee_type_language = models.CharField(max_length=1,choices=TUITION_FEE_CHOICES,null=True,blank=True)
 
     #现已缴纳学费类别，师弟不要用这个
-    tuition_fee_type_selfpaid = models.CharField(max_length=1,choices=TUITION_FEE_CHOICES,null=True)
+    tuition_fee_type_selfpaid = models.CharField(max_length=1,choices=TUITION_FEE_CHOICES,null=True,blank=True)
 
     #是否填写过JW202,可能取值True,Fals,Null
-    is_JW202_selfpaid = models.NullBooleanField(null=True)
+    is_JW202_selfpaid = models.NullBooleanField(null=True,blank=True)
+
+
+    def save(self, *args, **kwargs):
+        for var in vars(self):
+            if not var.startswith('_'):
+                if self.__dict__[var] == '':
+                    self.__dict__[var] = None
+        super(Applicant, self).save(*args, **kwargs)
+
+class Test(models.Model):
+    surname = models.CharField(max_length=60)
+
+    #special入境日期
+    date_of_entry_special = models.DateField(null=True,blank=True)
+
+        #现已缴纳学费类别
+    tuition_fee_type_language = models.CharField(max_length=1,choices=TUITION_FEE_CHOICES,null=True,blank=True)
+
+    once_left_china_x2 = models.NullBooleanField()
+
+    duration_of_each_stay_x2 = models.PositiveSmallIntegerField(null=True,blank=True)
+
+    def save(self, *args, **kwargs):
+        for var in vars(self):
+            if not var.startswith('_'):
+                if self.__dict__[var] == '':
+                    self.__dict__[var] = None
+        super(Test, self).save(*args, **kwargs)
