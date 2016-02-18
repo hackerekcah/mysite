@@ -11,10 +11,12 @@ sudo apt-get install python-dev
 sudo easy_install mysql-python
 (3)create a database
 mysql -u root -p(press enter,then enter password)
-CREATE DATABASE mysite;
+
+#create database with utf8 encoding
+CREATE DATABASE mysite
+  DEFAULT CHARACTER SET utf8
+  DEFAULT COLLATE utf8_general_ci;;
 (4)When add new model:
 python manage.py makemigrations [app name]
 python manage.py migrate
 
-TODO:
-数据库应该用utf8编码
