@@ -1,0 +1,107 @@
+{% extends "registration/base.html" %}
+{% load i18n %}
+
+{% block head_files %}
+    <script src="//cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+    <link href="/static/register/css/registration_form.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row col-md-6 col-md-offset-3">
+
+
+            <div class="panel panel-default" >
+                <div class="panel-heading">
+                    <div class="panel-title text-center">Bootsnipp.com</div>
+                </div>
+
+                <div class="panel-body" >
+                    <form method="post" action="." class="form-horizontal" role="form" >
+                        {% csrf_token %}
+                        <div class="form-group">
+
+                            {{ form.email.label_tag }}
+                            <div>
+                                {{ form.email }}
+                                {{ form.email.errors }}
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+
+                            {{ form.first_name.label_tag }}
+
+                            <div>
+                                {{ form.first_name }}
+                                {{ form.first_name.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            {{ form.last_name.label_tag }}
+
+                            <div>
+                                {{ form.last_name }}
+                                {{ form.last_name.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            {{ form.phone.label_tag }}
+
+                            <div>
+                                {{ form.phone }}
+                                {{ form.phone.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            {{ form.password1.label_tag }}
+
+                            <div>
+                                {{ form.password1 }}
+                                {{ form.password1.errors }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            {{ form.password2.label_tag }}
+
+                            <div>
+
+                                {{ form.password2 }}
+                                {{ form.password2.errors }}
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-md-offset-4">
+                            <input type="submit" class="btn btn-success" value="{% trans 'Register / Sign Up' %}" />
+                        </div>
+
+
+                    </form>
+
+                </div>
+                <div class="panel-footer text-center">
+                    Already have an account? <a href="{% url "auth_login" %}">Sign in here</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("form div label").addClass("col-md-3 control-label");
+            $("form div input").addClass("form-control");
+            $("form div div").addClass("col-md-8");
+            $("ul.errorlist").addClass("text-warning");
+            $("#id_phone").attr("placeholder","Phone Number In China.");
+
+
+        })
+    </script>
+
+{% endblock %}

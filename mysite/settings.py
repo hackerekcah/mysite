@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'books',
     'application',
     'info',
+    'register'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -109,6 +110,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+"/home/song/mysite/templates/registration/static/",
+)
+
 
 EMAIL_HOST = 'smtp.126.com'
 EMAIL_PORT = 25                               
@@ -117,3 +122,8 @@ EMAIL_HOST_PASSWORD = 'shy.1008'
 EMAIL_SUBJECT_PREFIX = '[CoorCar]'            
 EMAIL_USE_TLS = True                           
 
+DEFAULT_FROM_EMAIL = 'hitshw1@126.com'
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+AUTH_USER_MODEL = 'register.MyUser'
