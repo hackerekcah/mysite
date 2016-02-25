@@ -6,12 +6,10 @@ from django.template import RequestContext, loader
 from django.http import Http404
 
 from info.models import Applicant
-from info.models import Test
+
 import sys
 import datetime
 
-def index(request):
-    return render(request, 'info/info_index.html', {})
 def info_to_db(request):
 
     postList = request.POST
@@ -97,25 +95,9 @@ def info_to_db(request):
         is_JW202_selfpaid=              postList.get("applicant.is_JW202_selfpaid",None)
     )
     newApt.save()
+
     return render(request, 'info/submit_result.html', {"postList": postList.items()})
 
-def to_db(request):
-    postList = request.POST
-    # #print >>sys.stderr, postList["applicant.sexi"]
-    # newApt = Test(surname=postList.get("applicant.surname",None),
-    #               tuition_fee_type_language=postList.get("applicant.tuition_fee_type_language",None),
-    #               date_of_entry_special = postList.get("applicant.date_of_entry_special",None),
-    #
-    #               once_left_china_x2 = postList.get("applicant.once_left_china_x2",None),
-    #               duration_of_each_stay_x2 = postList.get("applicant.duration_of_each_stay_x2",None)
-    #               )
-    #
-    # #newApt = Test(surname=postList.get("applicant.surname",None))
-    # newApt.save()
-    return render(request, 'info/submit_result.html', {"postList": postList.items()})
-
-def test(request):
-    return render(request, 'info/test.html',{})
-def validate(request):
-    return render(request, 'info/validate.html',{})
+def info_form(request):
+    return render(request, 'info/info_form.html',{})
 

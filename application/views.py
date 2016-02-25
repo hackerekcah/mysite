@@ -1,25 +1,45 @@
 from django.shortcuts import render
-from application.models import Test
+from django.http import HttpResponseRedirect
+
+
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
 # Create your views here.
-from django.http import HttpResponse
+def index(request):
+    return render(request, 'application/index.html', {"user":request.user})
 
-from django.template import RequestContext, loader
-from django.http import Http404
 
-def index1(request):
-    return render(request, 'application/application1.html', {})
+def blank(request):
+    if request.user.is_authenticated():
 
-def index2(request):
-    return render(request, 'application/application2.html', {})
+        return render(request, 'application/blank.html', {})
+    else:
+        return HttpResponseRedirect('/accounts/login')
 
-def submit(request):
 
-    postList = request.POST.items()
-    return render(request, 'application/submit_result.html', {"postList": postList})
+def user_profile(request):
+    if request.user.is_authenticated():
+        return render(request, 'application/user_profile.html', {"user": request.user})
+    else:
+        return HttpResponseRedirect('/accounts/login')
 
-def to_db(request):
+def profile_change(request):
+    if request.user.is_authenticated():
+        user = User.objects.get(email = request.user.email)
+        user.first_name = request.POST.get("first_name",None)
+        user.last_name = request.POST.get("last_name",None)
+        user.phone = request.POST.get("phone",None)
+        user.save()
+        print user.phone
+        return render(request, 'application/user_profile.html', {"user": user})
+    else:
+        return HttpResponseRedirect('/accounts/login')
 
-    postList = request.POST
-    newApt = Test(surname=postList["applicant.lastName"],given_name=postList["applicant.lastName"])
-    newApt.save()
-    return render(request, 'application/submit_result.html', {"postList": postList.items()})
+
+def apply_for_visa(request):
+    if request.user.is_authenticated():
+
+        return render(request, 'application/apply_for_visa.html', {})
+    else:
+        return HttpResponseRedirect('/accounts/login')

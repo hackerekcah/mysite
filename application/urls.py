@@ -3,9 +3,12 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    # ex: /polls/
-    url(r'^1/$', views.index1, name='index1'),
-    url(r'^2/$', views.index2, name='index2'),
-    url(r'^submit/$', views.submit, name='submit'),
-    url(r'^to_db/$', views.to_db, name='to_db'),
+    url(r'^index/$', views.index, name='application_index'),
+    url(r'^user_profile/$', views.user_profile, name='application_user_profile'),
+    url(r'^apply_for_visa/$', views.apply_for_visa, name='application_apply_for_visa'),
+    url(r'^user_profile/save_change/$', views.profile_change, name='application_profile_change'),
+
+
+    url(r'^blank/$', views.blank, name='application_blank'),
+
 ]

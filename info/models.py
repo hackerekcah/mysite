@@ -135,23 +135,3 @@ class Applicant(models.Model):
                 if self.__dict__[var] == '':
                     self.__dict__[var] = None
         super(Applicant, self).save(*args, **kwargs)
-
-class Test(models.Model):
-    surname = models.CharField(max_length=60)
-
-    #special入境日期
-    date_of_entry_special = models.DateField(null=True,blank=True)
-
-        #现已缴纳学费类别
-    tuition_fee_type_language = models.CharField(max_length=1,choices=TUITION_FEE_CHOICES,null=True,blank=True)
-
-    once_left_china_x2 = models.NullBooleanField()
-
-    duration_of_each_stay_x2 = models.PositiveSmallIntegerField(null=True,blank=True)
-
-    def save(self, *args, **kwargs):
-        for var in vars(self):
-            if not var.startswith('_'):
-                if self.__dict__[var] == '':
-                    self.__dict__[var] = None
-        super(Test, self).save(*args, **kwargs)
