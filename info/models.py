@@ -35,7 +35,7 @@ STUDENT_CATEGORY_CHOICES =(
 )
 
 # Create your models here.
-class Applicant(models.Model):
+class ApplicationForm(models.Model):
 #################################Address & Contact################################
     #在华地址
     address_in_china = models.CharField(max_length=64)
@@ -134,4 +134,4 @@ class Applicant(models.Model):
             if not var.startswith('_'):
                 if self.__dict__[var] == '':
                     self.__dict__[var] = None
-        super(Applicant, self).save(*args, **kwargs)
+        super(ApplicationForm, self).save(*args, **kwargs)

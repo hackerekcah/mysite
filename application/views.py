@@ -43,3 +43,11 @@ def apply_for_visa(request):
         return render(request, 'application/apply_for_visa.html', {})
     else:
         return HttpResponseRedirect('/accounts/login')
+
+
+def application_status(request):
+    if request.user.is_authenticated():
+
+        return render(request, 'application/application_status.html', {})
+    else:
+        return HttpResponseRedirect('/accounts/login')

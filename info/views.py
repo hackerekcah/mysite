@@ -5,10 +5,11 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.http import Http404
 
-from info.models import Applicant
+from info.models import ApplicationForm
 
 import sys
 import datetime
+
 
 def info_to_db(request):
 
@@ -51,7 +52,7 @@ def info_to_db(request):
     else:
         print "unknown visa type!"
 
-    newApt = Applicant(
+    newApt = ApplicationForm(
         address_in_china =              postList.get("applicant.address_in_china",None),
         mobile_phone=                   postList.get("applicant.mobile_phone",None),
 ########################################################################################################

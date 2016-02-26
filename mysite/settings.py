@@ -124,4 +124,4 @@ DEFAULT_FROM_EMAIL = 'hitshw1@126.com'
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
-AUTH_USER_MODEL = 'register.MyUser'
+AUTH_USER_MODEL = 'register.UserProfile'

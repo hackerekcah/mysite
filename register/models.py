@@ -7,7 +7,9 @@ from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser, AbstractUser
 )
-class MyUserManager(BaseUserManager):
+
+
+class UserProfileManager(BaseUserManager):
     def create_user(self, email, password=None):
         """
         Creates and saves a User with the given email, date of
@@ -36,7 +38,7 @@ class MyUserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-class MyUser(AbstractBaseUser):
+class UserProfile(AbstractBaseUser):
     email = models.EmailField(
         verbose_name='email address',
         max_length=255,
@@ -49,7 +51,7 @@ class MyUser(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
-    objects = MyUserManager()
+    objects = UserProfileManager()
     USERNAME_FIELD = 'email'
 
     def get_full_name(self):
