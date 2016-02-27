@@ -1,8 +1,19 @@
-{% extends "base.html" %}
-{% load i18n %}
+{% extends "application/index_nav_base.html" %}
+
 
 {% block content %}
-
-<p>{% trans "Account activation failed" %}</p>
-
+    <div class="container">
+        <div class="alert alert-warning">
+            <h4><i class="fa fa-frown-o"></i> Sorry, your activation has been failed, it maybe caused by</h4>
+            <li>
+                It is not the first time you use this activation link to activate.
+            </li>
+            <li>
+                Your activation link is outdated.
+            </li>
+            <li>
+                Your activation link is not complete or wrong.
+            </li>
+        </div>
+    </div>
 {% endblock %}

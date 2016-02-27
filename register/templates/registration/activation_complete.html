@@ -1,6 +1,10 @@
-{% extends "base.html" %}
-{% load i18n %}
+{% extends "application/index_nav_base.html" %}
+
 
 {% block content %}
-<p>{% trans "Your account is now activated." %}</p>
+    <div class="container">
+        <div class="alert alert-success">
+            <h4><i class="fa fa-smile-o"></i> Your account is now activated.<i class="fa fa-check"></i></h4>
+        </div>
+    </div>
 {% endblock %}

@@ -1,6 +1,10 @@
-{% extends "base.html" %}
-{% load i18n %}
+{% extends "application/index_nav_base.html" %}
+
 
 {% block content %}
-	<p>{% trans "Registration is currently closed." %}</p>
+    <div class="container">
+        <div class="alert alert-success">
+            <h4><i class="fa fa-frown-o"></i> Registration is currently closed.<i class="fa fa-times"></i></h4>
+        </div>
+    </div>
 {% endblock %}

@@ -16,7 +16,9 @@
 
             <div class="panel panel-default" >
                 <div class="panel-heading">
-                    <div class="panel-title text-center">Sign In</div>
+                    <div class="panel-title text-center ">
+                        Sign In to <strong><a style="color: darkred" href="{% url 'application_index' %}">HIT-VISA</a></strong>
+                    </div>
                 </div>
 
                 <div class="panel-body" >
@@ -36,7 +38,7 @@
                         <div class="form-group">
 
                             {{ form.password.label_tag }}
-                            <a style="float: right" href="{% url "auth_password_reset" %}">Forget password?</a>
+                            <a style="float: right" href="{% url "application_password_reset" %}">Forget password?</a>
                             <div>
                                 {{ form.password }}
 
