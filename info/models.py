@@ -3,6 +3,9 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+from django.conf import settings
+
+
 GENDER_CHOICES = (
     ('M', 'Male'),
     ('F', 'Female'),
@@ -42,6 +45,10 @@ class ApplicationForm(models.Model):
 
     #手机号码
     mobile_phone = models.CharField(max_length=32)
+
+    user_email  = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                    on_delete=models.CASCADE,
+                                    )
 #################################Passport Info################################
     #姓
     surname = models.CharField(max_length=60)
