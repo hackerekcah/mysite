@@ -9,6 +9,11 @@ User = get_user_model()
 def index(request):
     return render(request, 'application/index.html', {"user":request.user})
 
+
+def procedure(request):
+    return render(request, 'application/application_procedure.html', {"user":request.user})
+
+
 def contact_us(request):
     return render(request, 'application/contact_us.html', {"user":request.user})
 

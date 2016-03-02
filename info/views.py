@@ -55,6 +55,8 @@ def info_to_db(request):
     newApt = ApplicationForm(
         address_in_china =              postList.get("applicant.address_in_china",None),
         mobile_phone=                   postList.get("applicant.mobile_phone",None),
+
+        user_email=                     request.user,
 ########################################################################################################
         surname =                       postList.get("applicant.surname",None),
         given_name=                     postList.get("applicant.given_name",None),

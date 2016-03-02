@@ -1,0 +1,157 @@
+{% extends "application/index_nav_base.html" %}
+
+
+{% block addHeadFiles %}
+
+    <!-- Timeline CSS -->
+    <link href="/static/dist/css/timeline.css" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>
+                                <i class="fa fa-clock-o fa-fw"></i> Application Procedure Timeline
+                            </h4>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <ul class="timeline">
+                                <li>
+                                    <div class="timeline-badge"><i class="fa fa-home"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Accomodation Registration</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>Before you start visa application procedure, we highly recommend you to finish
+                                            accomodation registration first.</p>
+                                            <p>Because when you fill out the visa application
+                                                form online, you need to provide your address, which should be identical to the
+                                                address column on your accomodation registration form.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge warning"><i class="glyphicon glyphicon-registration-mark"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title"><a href="{% url 'registration_register' %}">Register On HIT-VISA</a></h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>You need an account on <a href="{% url 'registration_register' %}"> HIT-VISA </a> to start visa application procedure.
+                                            <p>If you already got one account, you can just <a href="{% url 'application_login' %}">log in.</a></p>
+                                            <p>Your account will be valid during your study at HIT</p>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge danger"><i class="fa fa-table"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Fill Out And Submit Visa Application Form Online</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>After submission, website will automatically generate  Foreigner Visa Dcuments Application Form (《外国人签证证件申请表》) for you.</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge danger"><i class="fa fa-download"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Download And Print Foreigner Visa Dcuments Application Form</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>After submission, website will automatically generate  Foreigner Visa Dcuments Application Form (《外国人签证证件申请表》) for you.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge danger"><i class="fa fa-folder"></i>
+                                        </div>
+                                    <div class="timeline-panel">
+
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Materials / Documents Preparation</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p> According to your application, wesite will inform you the list of documents you need to prepare.</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge info"><i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Submit Documents / Materials to International Student Office(ISC) for Check</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>You need to submit these documents 10-15 days before the expiration of your visa or residence permit.</p>
+
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="timeline-badge info"><i class="fa fa-user"></i>
+                                        </div>
+                                    <div class="timeline-panel">
+
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Submit documents to Harbin Municipal Public Security Bureau Exit-Entry Administration</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p> .</p>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-inverted">
+                                    <div class="timeline-badge success"><i class="fa fa-retweet"></i>
+                                    </div>
+                                    <div class="timeline-panel">
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">Fetch your passport 30 days after</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p>.</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+
+                                <li>
+                                    <div class="timeline-badge info"><i class="fa fa-check"></i>
+                                        </div>
+                                    <div class="timeline-panel">
+
+                                        <div class="timeline-heading">
+                                            <h4 class="timeline-title">The End</h4>
+                                        </div>
+                                        <div class="timeline-body">
+                                            <p> You need to apply for visa again on this website 10-15 days before the expiration of this new visa.</p>
+                                        </div>
+                                    </div>
+                                </li>
+
+
+
+
+                            </ul>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+    </div>
+
+
+{% endblock %}
