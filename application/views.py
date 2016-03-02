@@ -18,7 +18,7 @@ def blank(request):
 
         return render(request, 'application/blank.html', {})
     else:
-        return HttpResponseRedirect('/accounts/login')
+        return HttpResponseRedirect('/application/login')
 
 
 def user_profile(request):

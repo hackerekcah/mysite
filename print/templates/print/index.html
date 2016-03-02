@@ -1,0 +1,14 @@
+<form action="{% url 'print:printpdf1' %}" method="post">
+{% csrf_token %}
+<p>please input id (you want to print to pdf)</p>
+<input type="text" name="id"/><br/>
+<input type="submit" name="submit"/>
+</form>
+<form action="{% url 'print:printpdf2' %}" method="post">
+{% csrf_token %}
+<p>please input id (you want to print to pdf)</p>
+<input type="text" name="id"/><br/>
+<input type="submit" name="submit"/>
+</form>
+<p>Do you want to download pdf files?</p>
+<a href="{% url 'print:downloadpdf' %}">Yes</a>
