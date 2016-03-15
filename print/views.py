@@ -22,7 +22,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
-from .models import Applicant2
+from info.models import ApplicationForm
 
 # Create your views here.
 A={"AF":"阿富汗"
@@ -302,14 +302,10 @@ def downloadpdf(request):
 
 def printpdf1(request):
     elements = []
-    time=datetime.datetime.now().strftime('%Y%m%d-%H')
+    time=datetime.datetime.now().strftime('%Y%m%d-%H:%M:%S')
     the_file_name = 'test1_'+time+'.pdf'
     doc = SimpleDocTemplate(the_file_name,topMargin=0)
 
-    # formatted_time=time.ctime()
-    # attrs.append(Paragraph("<font size=14>%s</font>" %formatted_time,stylesheet['Normal']))
-    # attrs.append(Spacer(1,12))
-    #datetime.datetime
     elements.append(flowables.Image("/home/song/mysite/print/images/hit.png", width=8.3 * inch, height=4 * inch))
     elements.append(Paragraph(u'<font name="song"size=22><b>关于申请为留学生办理签证手续的函</b></font>', stylesheet['Title']))
     elements.append(Spacer(1, 12))
@@ -318,7 +314,8 @@ def printpdf1(request):
     import MySQLdb
     conn = MySQLdb.connect(host="localhost",user="root",passwd="root",db="mysite",charset="utf8")
     cur = conn.cursor()
-    sql = "select id,surname,given_name,sex,nationality,date_of_birth,address_in_china,passport_number,passport_valid_until,current_visa_category,visa_number,date_of_entry_x1,visa_valid_until_rp,date_of_entry_special,duration_of_each_stay_special,once_left_china_x2,visa_valid_until_x2,date_of_departure_x2,date_of_reentry_x2,duration_of_each_stay_x2,visa_valid_until_final,student_category,study_duration_start,study_duration_end,tuition_fee_type_language,tuition_fee_type_selfpaid,is_JW202_selfpaid from print_applicant2"
+    sql = "select * from info_applicationform where id=(select max(id) from info_applicationform where user_email_id=\'" +str(request.user.email)+"\');"
+    print "\n\n\n\n\n\n\n"+sql;
     cur.execute(sql)
     result = cur.fetchall()
     d = []
@@ -334,15 +331,15 @@ def printpdf1(request):
         l=list(l)
         inpdf.append(i)
         i += 1
-        if namemaxlen<len(str(l[1])+" "+str(l[2])):
-            namemaxlen=len(str(l[1])+" "+str(l[2]))
-        inpdf.append(str(l[1])+" "+str(l[2]))
-        if nationmaxlen<len(A[str(l[4])]):
-            nationmaxlen=len(A[str(l[4])])
-        inpdf.append(A[str(l[4])])
-        inpdf.append(l[5].strftime("%Y%m%d"))
-        inpdf.append(l[7])
-        inpdf.append(l[22].strftime("%Y%m-")+l[23].strftime("%Y%m"))
+        if namemaxlen<len(str(l[3])+" "+str(l[4])):
+            namemaxlen=len(str(l[3])+" "+str(l[4]))
+        inpdf.append(str(l[3])+" "+str(l[4]))
+        if nationmaxlen<len(A[str(l[6])]):
+            nationmaxlen=len(A[str(l[6])])
+        inpdf.append(A[str(l[6])])
+        inpdf.append(l[7].strftime("%Y%m%d"))
+        inpdf.append(l[8])
+        inpdf.append(l[27].strftime("%Y%m-")+l[28].strftime("%Y%m"))
         d.append(inpdf)
         counter += 1
         if counter == 1:
@@ -400,7 +397,7 @@ def printpdf2(request):
     import MySQLdb
     conn = MySQLdb.connect(host="localhost",user="root",passwd="root",db="mysite",charset="utf8")
     cur = conn.cursor()
-    sql = "select id,surname,given_name,sex,nationality,date_of_birth,address_in_china,passport_number,passport_valid_until,current_visa_category,visa_number,date_of_entry_x1,visa_valid_until_rp,date_of_entry_special,duration_of_each_stay_special,once_left_china_x2,visa_valid_until_x2,date_of_departure_x2,date_of_reentry_x2,duration_of_each_stay_x2,visa_valid_until_final,student_category,study_duration_start,study_duration_end,tuition_fee_type_language,tuition_fee_type_selfpaid,is_JW202_selfpaid from print_applicant2"
+    sql = "select * from info_applicationform where id=(select max(id) from info_applicationform where user_email_id=\'" +str(request.user.email)+"\');"
     cur.execute(sql)
     result = cur.fetchall()
 
@@ -430,7 +427,7 @@ def printpdf2(request):
         # 1111111111111111111111111111111111111111111111111111111111111111111111111
         i=0
         blankstr="                  "
-        while i<len(l[1]):
+        while i<len(l[3]):
             blankstr += " "
             i += 1
         i=0
@@ -439,11 +436,11 @@ def printpdf2(request):
                               stylesheet['Normal']))
         attrs.append(Spacer(1, 2))
         attrs.append(XPreformatted(
-                "<para><font name='tm'size=10.5><b>Surname<u> "+l[1].upper()+"</u>  Given name<u> "+l[2].upper()+"</u></b></font></para>",
+                "<para><font name='tm'size=10.5><b>Surname<u> "+l[3].upper()+"</u>  Given name<u> "+l[4].upper()+"</u></b></font></para>",
                 stylesheet['Normal']))
         attrs.append(Spacer(1, 2))
         blankstr="              "
-        while i<len(A[l[4]]):
+        while i<len(A[l[6]]):
             blankstr += " "
             i += 1
         i=0
@@ -452,28 +449,28 @@ def printpdf2(request):
                 stylesheet['Normal']))
         attrs.append(Spacer(1, 2))
         attrs.append(XPreformatted(
-                "<para fontname='tm' fontsize=10.5><b>Name in Chinese____ Nationality<font name='song'><u> "+A[l[4]]+"</u></font>  Birth place<font name='song'><u> "+A[l[4]]+"</u></font></b></para>",
+                "<para fontname='tm' fontsize=10.5><b>Name in Chinese____ Nationality<font name='song'><u> "+A[l[6]]+"</u></font>  Birth place<font name='song'><u> "+A[l[6]]+"</u></font></b></para>",
                 stylesheet['Normal']))
         attrs.append(Spacer(1, 2))
         attrs.append(XPreformatted(
                 "<para><font name='song'size=10.5><b>出生日期</b>               年       月      日        <b>性别：   </b>男         女</font></para>",
                 stylesheet['Normal']))
         attrs.append(Spacer(1, 0))
-        if str(l[3])=='M':
+        if str(l[5])=='M':
             flagM='■'
             flagF='□'
-        elif str(l[3])=='F':
+        elif str(l[5])=='F':
                 flagM='□'
                 flagF='■'
         else:
                 print 'Error:Sex failed to write!!!'
-        datestr=l[5].strftime("%Y%m%d")
+        datestr=l[7].strftime("%Y%m%d")
         attrs.append(XPreformatted(
                 "<para><font name='tm'size=10.5><b>Date of birth</b><u>  "+datestr[0:4]+"__</u>Y<u>  "+datestr[4:6]+"_</u>M<u>  "+datestr[6:8]+"_</u>D         <b>Sex         </b>M. <font size=14>"+flagM+"</font>     F. <font size=14>"+flagF+"</font></font></para>",
                 stylesheet['Normal']))
         attrs.append(Spacer(1, 6))
         blankstr="               "
-        while i<len(l[6]):
+        while i<len(l[1]):
             blankstr += "   "
             i += 1
         i=0
@@ -482,7 +479,7 @@ def printpdf2(request):
                 stylesheet['Normal']))
         attrs.append(Spacer(1, 2))
         attrs.append(XPreformatted(
-                "<para><font name='tm'size=10.5><b>Address in China<font name='song'><u> "+l[6]+"</u></font>  Tel<u> 86403742</u></b></font>",
+                "<para><font name='tm'size=10.5><b>Address in China<font name='song'><u> "+l[1]+"</u></font>  Tel<u> 86403742</u></b></font>",
                 stylesheet['Normal']))
         attrs.append(Spacer(1, 2))
         attrs.append(XPreformatted(
@@ -505,7 +502,7 @@ def printpdf2(request):
         ))
         attrs.append(Spacer(1,6))
         blankstr="               "
-        while i<len(l[7]):
+        while i<len(l[8]):
             blankstr += " "
             i += 1
         i=0
@@ -514,9 +511,9 @@ def printpdf2(request):
             stylesheet['Normal']
         ))
         attrs.append(Spacer(1,2))
-        datestr=l[8].strftime("%Y%m%d")
+        datestr=l[9].strftime("%Y%m%d")
         attrs.append(XPreformatted(
-            "<para><font name='tm'size=10.5><b>Passport No.<u> "+l[7]+" </u> Valid until  <u>"+datestr[0:4]+"</u></b>Y<u>  "+datestr[4:6]+"  </u> M<u>  "+datestr[6:8]+"  </u>D</font></para>",
+            "<para><font name='tm'size=10.5><b>Passport No.<u> "+l[8]+" </u> Valid until  <u>"+datestr[0:4]+"</u></b>Y<u>  "+datestr[4:6]+"  </u> M<u>  "+datestr[6:8]+"  </u>D</font></para>",
             stylesheet['Normal']
         ))
         attrs.append(Spacer(1,4))
@@ -526,22 +523,31 @@ def printpdf2(request):
             stylesheet['Normal']
         ))
         attrs.append(Spacer(1,0))
-        if l[9]=='X1':
+        if l[10]=='X1':
             flagVisa='■'
             flagSP='□'
             flagRP='□'
-        elif l[9]=='JL':
+            Visa_number=str(l[12])
+        elif l[10]=='JL':
             flagVisa='□'
             flagSP='□'
             flagRP='■'
-        elif l[9]=='MQ':
+            Visa_number=str(l[14])
+        elif l[10]=='MQ':
             flagVisa='□'
             flagSP='□'
             flagRP='□'
-        elif l[9]!=None:
+            Visa_number='       '
+        elif l[10]=='X2':
             flagVisa='■'
             flagSP='□'
             flagRP='□'
+            Visa_number=str(l[19])
+        elif l[10]!=None:
+            flagVisa='■'
+            flagSP='□'
+            flagRP='□'
+            Visa_number=str(l[16])
         else:
             print 'Visa WRONG!!!!!!!'
         attrs.append(XPreformatted(
@@ -550,7 +556,7 @@ def printpdf2(request):
         ))
         attrs.append(Spacer(1,6))
         blankstr="       "
-        while i<len(l[10]):
+        while i<len(Visa_number):
             blankstr += " "
             i += 1
         i=0
@@ -559,9 +565,9 @@ def printpdf2(request):
             stylesheet['Normal']
         ))
         attrs.append(Spacer(1,2))
-        datestr=l[20].strftime("%Y%m%d")
+        datestr=l[25].strftime("%Y%m%d")
         attrs.append(XPreformatted(
-            "<para><font name='tm'size=10.5><b>Visa No.<u> "+l[10]+" </u> Valid until<u>  "+datestr[0:4]+"__</u></b>Y<u>  "+datestr[4:6]+"__</u>M<u>  "+datestr[6:8]+"__</u>D</font></para>",
+            "<para><font name='tm'size=10.5><b>Visa No.<u> "+Visa_number+" </u> Valid until<u>  "+datestr[0:4]+"__</u></b>Y<u>  "+datestr[4:6]+"__</u>M<u>  "+datestr[6:8]+"__</u>D</font></para>",
             stylesheet['Normal']
         ))
         attrs.append(Spacer(1,4))
@@ -598,25 +604,25 @@ def printpdf2(request):
 
 
 
-        print sys.stderr,l[3],A[l[4]],l[5],l[7],l[12],len(blankstr),len(A[l[4]]),len(l[6]),l[20],l[21],l[22],l[23],l[24]
+        #print sys.stderr,l[3],A[l[4]],l[5],l[7],l[12],len(blankstr),len(A[l[4]]),len(l[6]),l[20],l[21],l[22],l[23],l[24]
     #分页分页分页
         attrs.append(PageBreak())
 
-        if l[9] in ('X1','JL'):
+        if l[10] in ('X1','JL'):
             flagS7='■'
             flagS6='□'
             flagS5='□'
-        elif l[9]=='MQ':
+        elif l[10]=='MQ':
             flagS7='□'
             flagS6='■'
             flagS5='□'
-        elif l[9]!=None:
-            if l[21]=='LANGUAGE':
+        elif l[10]!=None:
+            if l[26]=='LANGUAGE':
                 flagS7='□'
                 flagS6='□'
                 flagS5='■'
-            elif l[21]=='SELFPAID':
-                if l[26]==True:
+            elif l[26]=='SELFPAID':
+                if l[31]==True:
                     flagS7='■'
                     flagS6='□'
                     flagS5='□'
@@ -624,43 +630,43 @@ def printpdf2(request):
                     flagS7='□'
                     flagS6='□'
                     flagS5='■'
-        if l[4] in ('AF','IR','IQ','NG','PK','LK'):
-            if l[23]-datetime.date.today()>=datetime.timedelta(days=365):
-                datestr=l[23].strftime("%Y")+"0731"
+        if l[6] in ('AF','IR','IQ','NG','PK','LK'):
+            if l[28]-datetime.date.today()<=datetime.timedelta(days=365):
+                datestr=l[28].strftime("%Y")+"0731"
             else:
-                l[20].year+=1
-                datestr=l[20].strftime("%Y%m%d")
-        elif l[21]=='LANGUAGE':
-            if l[24]=='F':
-                if l[9]=='MQ':
+                l[25].year+=1
+                datestr=l[25].strftime("%Y%m%d")
+        elif l[26]=='LANGUAGE':
+            if l[29]=='F':
+                if l[10]=='MQ':
                     datestr=str(datetime.date.today()+datetime.timedelta(days=180))
                 else:
-                    if datetime.date.today.month>=7 and datetime.date.today.day>=15:
+                    if datetime.date.today().month>=7 and datetime.date.today().day>=15:
                         datestr=str(datetime.date.today.year+1)+"0715"
-                    elif datetime.date.today.month==1 and datetime.date.today.day<15:
-                        datestr=str(datetime.date.today.year)+"0715"
+                    elif datetime.date.today().month==1 and datetime.date.today().day<15:
+                        datestr=str(datetime.date.today().year)+"0715"
                     else:
-                        datestr=str(datetime.date.today.year+1)+"0115"
-            elif l[24]=='H':
+                        datestr=str(datetime.date.today().year+1)+"0115"
+            elif l[29]=='H':
                 datestr=caldate2(datestr)
             else:
                 print "tuition_fee_type_language is WRONG!!!!!!"
-        elif l[21]=='EXCHANGE':
-            if l[23]!=None and l[22]!=None:
-                if (l[23]-l[22])>=datetime.timedelta(days=270):
+        elif l[26]=='EXCHANGE':
+            if l[28]!=None and l[27]!=None:
+                if (l[28]-l[27])>=datetime.timedelta(days=270):
                     datestr=caldate1(datestr)
                 else:
                     datestr=caldate2(datestr)
             else:
                 print "study_duration_start or study_duration_end is WRONG!!!!!!!!!!!!!!!"
-        elif l[21]=='SELFPAID':
-            if l[23]-datetime.date.today()>=datetime.timedelta(days=365):
-                datestr=l[23].strftime("%Y")+"0731"
+        elif l[26]=='SELFPAID':
+            if l[28]-datetime.date.today()<=datetime.timedelta(days=365):
+                datestr=l[28].strftime("%Y")+"0731"
             else:
-                l[20].year+=1
-                datestr=l[20].strftime("%Y%m%d")
-        elif l[21]=='CSCORHIT':
-            datestr=str(l[23].year)+"0731"
+                l[25].year+=1
+                datestr=l[25].strftime("%Y%m%d")
+        elif l[26]=='CSCORHIT':
+            datestr=str(l[28].year)+"0731"
     #5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555
         attrs.append(Spacer(1,40))
         attrs.append(XPreformatted(
